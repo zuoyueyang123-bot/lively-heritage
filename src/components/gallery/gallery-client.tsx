@@ -116,7 +116,7 @@ export function GalleryClient() {
                 </div>
                 <div className="mt-2 text-xl font-black">{item.title}</div>
                 <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--muted)]">{item.prompt}</p>
-                <div className="mt-3 flex items-center gap-3 text-xs text-[var(--muted)]">
+                <div className="mt-3 flex items-center gap-3 text-xs text-[var(--muted)]" suppressHydrationWarning>
                   <span className="flex items-center gap-1"><Heart size={12} /> {getLikeState(item.slug).count}</span>
                   <span className="flex items-center gap-1"><Eye size={12} /> {getViewCount(item.slug)}</span>
                   <span className="flex items-center gap-1"><Clock size={12} /> {new Date(item.createdAt).toLocaleDateString("zh-CN")}</span>
