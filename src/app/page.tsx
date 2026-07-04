@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Boxes, GalleryHorizontalEnd, Share2, Sparkles, Palette, Layers } from "lucide-react";
 import { crafts } from "@/lib/heritage";
 import { HeroParticles } from "@/components/home/hero-particles";
-import { HeroShowroom } from "@/components/home/hero-showroom";
+import { HeroShowcase } from "@/components/home/hero-showcase";
 import { FeaturedWorks } from "@/components/home/featured-works";
 
 const capabilities = [
@@ -50,14 +50,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 3D */}
-          <div className="glass-panel rounded-[36px] p-4 shadow-2xl sm:p-5">
-            <div className="rounded-[28px] p-3 text-white sm:p-4" style={{ background: "linear-gradient(160deg, #1e1730, #0e0b1a)" }}>
-              <HeroShowroom />
-              <p className="mt-4 text-center text-xs text-white/50">
-                ↑ 这是系统实时生成的景泰蓝纹样，贴在花瓶上。你也可以做一个属于自己的。
-              </p>
-            </div>
+          {/* Showcase */}
+          <div>
+            <HeroShowcase />
           </div>
         </div>
       </section>
