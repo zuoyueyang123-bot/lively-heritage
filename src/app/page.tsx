@@ -55,7 +55,7 @@ export default function Home() {
 
           {/* 3D Showroom Hero */}
           <div className="glass-panel rounded-[36px] p-5 shadow-2xl">
-            <div className="rounded-[28px] bg-linear-to-br from-[#1b1630] to-[#0d0a1a] p-4 text-white">
+            <div className="rounded-[28px] p-4 text-white" style={{ background: "linear-gradient(135deg, #1b1630, #0d0a1a)" }}>
               <ShowroomScene variant="vase" showDownload={false} className="h-[320px] sm:h-[420px] lg:h-[480px]" />
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {[
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* Social Value / Mission Section */}
       <section className="page-shell py-16">
-        <div className="glass-panel rounded-[32px] bg-linear-to-br from-[#1b1630] to-[#0d0a1a] p-10 text-white lg:p-14">
+        <div className="rounded-[32px] border border-white/10 p-10 text-white shadow-[0_24px_70px_rgba(13,10,26,0.24)] lg:p-14" style={{ background: "linear-gradient(135deg, #1b1630, #0d0a1a)" }}>
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <div className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold-soft)]">Our Mission</div>
