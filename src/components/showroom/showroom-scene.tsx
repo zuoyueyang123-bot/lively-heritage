@@ -3,8 +3,19 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { ContactShadows, Environment, Float, OrbitControls } from "@react-three/drei";
 import { Camera } from "lucide-react";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setMobile(window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent));
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return mobile;
+}
 
 function fallbackPattern() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="#1b1630"/><circle cx="256" cy="256" r="160" fill="#b9362d"/><circle cx="256" cy="256" r="92" fill="#c8912d"/><text x="256" y="276" text-anchor="middle" font-size="44" font-family="sans-serif" fill="#fffaf2">非遗有灵</text></svg>`;
@@ -253,6 +264,8 @@ export function ShowroomScene({
   showDownload?: boolean;
   className?: string;
 }) {
+  const isMobile = useIsMobile();
+
   function downloadShot() {
     const canvas = document.querySelector<HTMLCanvasElement>("#feiyi-showroom-canvas canvas");
     if (!canvas) return;
@@ -262,8 +275,25 @@ export function ShowroomScene({
     link.click();
   }
 
+  // Mobile: show pattern image directly instead of crashing WebGL
+  if (isMobile) {
+    return (
+      <div className={`relative grid place-items-center overflow-hidden rounded-[28px] border border-[var(--line)] bg-[#1a1627] ${className}`}>
+        {textureUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={textureUrl} alt="纹样预览" className="h-full w-full object-cover opacity-90" />
+        ) : (
+          <div className="text-center text-white/60">
+            <p className="text-lg font-black">3D 展厅</p>
+            <p className="mt-1 text-xs">桌面端可查看 3D 实时贴图效果</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <div className={`relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-linear-to-b from-[#221b33] to-[#12101d] ${className}`} id="feiyi-showroom-canvas">
+    <div className={`relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-[#1a1627] ${className}`} id="feiyi-showroom-canvas">
       {showDownload ? (
         <button
           onClick={downloadShot}
@@ -277,12 +307,12 @@ export function ShowroomScene({
       <Canvas
         camera={{ position: [0, 0.6, 4.4], fov: 38 }}
         shadows
-        dpr={[1, 2]}
-        gl={{ preserveDrawingBuffer: true, antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.15 }}
+        dpr={[1, 1.5]}
+        gl={{ preserveDrawingBuffer: true, antialias: true, powerPreference: "high-performance", toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.15 }}
       >
         <color attach="background" args={["#191527"]} />
-        <ambientLight intensity={0.45} />
-        <spotLight position={[5, 6, 4]} angle={0.5} penumbra={0.8} intensity={120} castShadow shadow-mapSize={[2048, 2048]} />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[5, 6, 4]} angle={0.5} penumbra={0.8} intensity={110} castShadow shadow-mapSize={[1024, 1024]} />
         <directionalLight position={[-4, 3, -2]} intensity={1.4} color="#9fb8ff" />
         <pointLight position={[0, -1, 3]} intensity={12} color="#ffd9a0" />
         <TexturedObject textureUrl={textureUrl} variant={variant} />
