@@ -9,8 +9,11 @@ export function useEngagement(slug: string) {
   const [views, setViews] = useState(0);
 
   useEffect(() => {
-    setLikes(getLikeState(slug).count);
-    setViews(getViewCount(slug));
+    const raf = requestAnimationFrame(() => {
+      setLikes(getLikeState(slug).count);
+      setViews(getViewCount(slug));
+    });
+    return () => cancelAnimationFrame(raf);
   }, [slug]);
 
   return { likes, views };

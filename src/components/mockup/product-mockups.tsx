@@ -357,12 +357,13 @@ function MockupCanvas({
   size: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const drawnRef = useRef(false);
+  const drawnKeyRef = useRef("");
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || drawnRef.current) return;
-    drawnRef.current = true;
+    const key = `${artwork.patternImage}:${kind}`;
+    if (!canvas || !artwork.patternImage || drawnKeyRef.current === key) return;
+    drawnKeyRef.current = key;
     void drawMockup(canvas, artwork, kind);
   }, [artwork, kind]);
 

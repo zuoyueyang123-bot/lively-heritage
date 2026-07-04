@@ -6,7 +6,7 @@ import { ArrowRight, Clock, Eye, Heart } from "lucide-react";
 import { demoArtworks, getArtworks } from "@/lib/artwork-store";
 import { crafts, getCraft } from "@/lib/heritage";
 import { PatternThumb } from "@/components/gallery/pattern-thumb";
-import { getLikeState, getViewCount } from "@/lib/engagement";
+import { getLikeState } from "@/lib/engagement";
 import { useEngagement } from "@/components/gallery/use-engagement";
 import type { Artwork } from "@/lib/types";
 
