@@ -32,12 +32,17 @@ export function HeritageCraftCard({ craft }: { craft: HeritageCraft }) {
         </div>
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{craft.tagline}</p>
 
-        {/* Palette */}
+        {/* Palette + inheritor hint */}
         <div className="mt-3 flex items-center gap-2">
           {craft.palette.map((c, i) => (
             <div key={i} className="h-5 w-5 rounded-full border border-black/10" style={{ background: c }} />
           ))}
-          <span className="ml-auto text-xs text-[var(--muted)]">{craft.features.slice(0, 2).join(" · ")}</span>
+          <div className="ml-auto flex items-center gap-1.5">
+            <div className="grid h-6 w-6 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: craft.palette[0] }}>
+              {craft.inheritor.name.slice(0, 1)}
+            </div>
+            <span className="text-xs text-[var(--muted)]">{craft.inheritor.name}</span>
+          </div>
         </div>
 
         {/* Expand toggle */}

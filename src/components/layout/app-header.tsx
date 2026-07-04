@@ -5,10 +5,10 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "/create", label: "创作台" },
-  { href: "/gallery", label: "作品广场" },
-  { href: "/heritage", label: "非遗图鉴" },
-  { href: "/about", label: "关于" },
+  { href: "/create", label: "创作台", highlight: false },
+  { href: "/gallery", label: "作品广场", highlight: false },
+  { href: "/heritage", label: "📖 图鉴", highlight: true },
+  { href: "/about", label: "关于", highlight: false },
 ];
 
 export function AppHeader() {
@@ -30,7 +30,7 @@ export function AppHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm font-bold text-[var(--muted)] transition hover:bg-black/5 hover:text-[var(--ink)]"
+              className={`rounded-full px-4 py-2 text-sm font-bold transition hover:bg-black/5 hover:text-[var(--ink)] ${link.highlight ? "text-[var(--ink)]" : "text-[var(--muted)]"}`}
             >
               {link.label}
             </Link>
