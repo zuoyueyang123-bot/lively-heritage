@@ -14,12 +14,15 @@ export function HeroShowroom() {
   const [texture, setTexture] = useState("");
 
   useEffect(() => {
-    const canvas = document.createElement("canvas");
-    canvas.width = 512;
-    canvas.height = 512;
-    const craft = getCraft("jingtai");
-    generatePattern(canvas, craft.render, "非遗文创提案", craft.palette, 1.0, 3);
-    setTexture(canvas.toDataURL("image/png"));
+    const raf = requestAnimationFrame(() => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 512;
+      canvas.height = 512;
+      const craft = getCraft("jingtai");
+      generatePattern(canvas, craft.render, "非遗文创提案", craft.palette, 1.0, 3);
+      setTexture(canvas.toDataURL("image/png"));
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
