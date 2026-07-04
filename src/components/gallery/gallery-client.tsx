@@ -9,6 +9,15 @@ import { PatternThumb } from "@/components/gallery/pattern-thumb";
 import { getLikeState, getViewCount } from "@/lib/engagement";
 import type { Artwork } from "@/lib/types";
 
+/** 避免 toLocaleDateString 在服务端/客户端 Hydration 不一致 */
+function formatDate(iso: string) {
+  const d = new Date(iso);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}/${m}/${day}`;
+}
+
 export function GalleryClient() {
   const [items, setItems] = useState<Artwork[]>(demoArtworks);
   const [remoteItems, setRemoteItems] = useState<Artwork[] | null>(null);
@@ -119,7 +128,7 @@ export function GalleryClient() {
                 <div className="mt-3 flex items-center gap-3 text-xs text-[var(--muted)]" suppressHydrationWarning>
                   <span className="flex items-center gap-1"><Heart size={12} /> {getLikeState(item.slug).count}</span>
                   <span className="flex items-center gap-1"><Eye size={12} /> {getViewCount(item.slug)}</span>
-                  <span className="flex items-center gap-1"><Clock size={12} /> {new Date(item.createdAt).toLocaleDateString("zh-CN")}</span>
+                  <span className="flex items-center gap-1"><Clock size={12} /> {formatDate(item.createdAt)}</span>
                 </div>
               </div>
             </Link>
