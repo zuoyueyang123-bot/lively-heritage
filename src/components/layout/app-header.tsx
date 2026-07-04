@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 const links = [
   { href: "/create", label: "创作台", highlight: false },
@@ -40,6 +41,7 @@ export function AppHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Link href="/create" className="gold-button px-4 py-2 text-sm">
             开始生成
           </Link>
