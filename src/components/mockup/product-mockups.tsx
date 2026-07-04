@@ -211,7 +211,6 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: num
 
 function MockupCanvas({ artwork, kind, title, size }: { artwork: Artwork; kind: MockupKind; title: string; size: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const aspectClass = kind === "bag" || kind === "cup" ? "aspect-[4/3]" : "aspect-[3/4]";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -228,16 +227,17 @@ function MockupCanvas({ artwork, kind, title, size }: { artwork: Artwork; kind: 
   }
 
   return (
-    <div className="glass-panel rounded-[24px] p-4">
-      <canvas ref={canvasRef} className={`${aspectClass} w-full rounded-[18px] bg-[#171326] object-contain`} />
-      <div className="mt-3 flex items-center justify-between gap-3">
-        <div>
-          <div className="font-black">{title}</div>
-          <div className="text-xs font-bold text-[var(--muted)]">{size}</div>
+    <div className="glass-panel rounded-[20px] p-3">
+      <div className="aspect-square overflow-hidden rounded-[14px] bg-[#fffaf2]">
+        <canvas ref={canvasRef} className="h-full w-full object-contain" />
+      </div>
+      <div className="mt-2 flex items-center justify-between gap-2">
+        <div className="min-w-0">
+          <div className="truncate text-sm font-black">{title}</div>
+          <div className="text-xs text-[var(--muted)]">{size}</div>
         </div>
-        <button onClick={download} className="quiet-button flex items-center gap-2 px-3 py-2 text-sm">
-          <Download size={15} />
-          下载
+        <button onClick={download} className="quiet-button shrink-0 px-3 py-1.5 text-xs">
+          <Download size={13} />
         </button>
       </div>
     </div>
@@ -253,7 +253,7 @@ export function ProductMockups({ artwork }: { artwork: Artwork }) {
           <p className="mt-1 text-sm font-semibold text-[var(--muted)]">把同一套纹样落到文创商品、壁纸和传播海报。</p>
         </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {items.map((item) => (
           <MockupCanvas key={item.kind} artwork={artwork} {...item} />
         ))}
