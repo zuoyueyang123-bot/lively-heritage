@@ -57,7 +57,7 @@ export default function AboutPage() {
         <h1 className="section-title mx-auto mt-3 max-w-4xl">
           让非遗传承，从「观看」变成「参与」
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-9 text-[var(--muted)]">
+        <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-9 text-[var(--foreground-dim)]">
           非遗有灵是一个非遗文创提案生成平台。我们相信，真正的活态传承，不是把非遗放进玻璃展柜，
           而是让每个人都能亲手用非遗创造、表达和传播。
         </p>
@@ -75,7 +75,7 @@ export default function AboutPage() {
                   <Icon size={22} className="text-[#b9362d]" />
                 </div>
                 <h3 className="mt-4 text-xl font-black">{p.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{p.text}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-dim)]">{p.text}</p>
               </div>
             );
           })}
@@ -85,7 +85,7 @@ export default function AboutPage() {
       {/* Our approach */}
       <section className="mb-16">
         <h2 className="text-3xl font-black">我们的答案：让人人都能创造非遗</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-[var(--foreground-dim)]">
           与其让用户被动浏览，不如给他们一支「数字的绣花针」。从一句灵感开始，走完创造与传播的完整闭环。
         </p>
         <div className="mt-6 grid gap-4 md:grid-cols-4">
@@ -100,7 +100,7 @@ export default function AboutPage() {
                   <span className="text-3xl font-black text-[var(--line)]">0{i + 1}</span>
                 </div>
                 <h3 className="mt-4 text-xl font-black">{s.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{s.text}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-dim)]">{s.text}</p>
               </div>
             );
           })}
@@ -111,13 +111,13 @@ export default function AboutPage() {
       <section className="mb-16">
         <h2 className="text-3xl font-black">看非遗 vs 用非遗创作</h2>
         <div className="mt-6 glass-panel overflow-hidden rounded-[28px]">
-          <div className="grid grid-cols-2 border-b border-[var(--line)] bg-white/40">
-            <div className="p-5 text-center text-sm font-black text-[var(--muted)]">传统非遗数字化</div>
+          <div className="grid grid-cols-2 border-b border-[var(--line)] bg-white/5">
+            <div className="p-5 text-center text-sm font-black text-[var(--foreground-dim)]">传统非遗数字化</div>
             <div className="p-5 text-center text-sm font-black text-[var(--gold)]">非遗有灵</div>
           </div>
           {comparison.map((row, i) => (
-            <div key={i} className={`grid grid-cols-2 ${i % 2 === 0 ? "bg-white/20" : ""}`}>
-              <div className="border-r border-[var(--line)] p-5 text-sm text-[var(--muted)]">{row.them}</div>
+            <div key={i} className={`grid grid-cols-2 ${i % 2 === 0 ? "bg-white/3" : ""}`}>
+              <div className="border-r border-[var(--line)] p-5 text-sm text-[var(--foreground-dim)]">{row.them}</div>
               <div className="p-5 text-sm font-bold">{row.us}</div>
             </div>
           ))}
@@ -127,7 +127,7 @@ export default function AboutPage() {
       {/* Social value tiers */}
       <section className="mb-16">
         <h2 className="text-3xl font-black">落地价值 · 三端普惠</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-[var(--foreground-dim)]">
           同一套能力，服务从大众到教育、文旅的不同场景，让非遗创作真正可用、可推广。
         </p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -139,10 +139,10 @@ export default function AboutPage() {
                   <Icon size={22} className="text-[var(--gold)]" />
                 </div>
                 <h3 className="mt-4 text-lg font-black">{t.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t.text}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-dim)]">{t.text}</p>
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {t.tags.map((tag) => (
-                    <span key={tag} className="rounded-full bg-black/5 px-2.5 py-1 text-xs font-bold text-[var(--muted)]">{tag}</span>
+                    <span key={tag} className="rounded-full bg-black/5 px-2.5 py-1 text-xs font-bold text-[var(--foreground-dim)]">{tag}</span>
                   ))}
                 </div>
               </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
       {/* Architecture flow */}
       <section className="mb-16">
         <h2 className="text-3xl font-black">技术架构 · 全链路诚实透明</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-[var(--foreground-dim)]">
           从一句灵感到可分享作品的完整技术链路。AI 不可用时自动降级本地知识库，核心创作与分享永不阻塞。
         </p>
         <div className="mt-6 flex flex-wrap items-stretch gap-3">
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   <span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--gold)] text-xs font-black text-white">{i + 1}</span>
                   <span className="font-black">{a.step}</span>
                 </div>
-                <p className="mt-2 max-w-[180px] text-xs leading-5 text-[var(--muted)]">{a.detail}</p>
+                <p className="mt-2 max-w-[180px] text-xs leading-5 text-[var(--foreground-dim)]">{a.detail}</p>
               </div>
               {i < architecture.length - 1 && <ArrowRight size={18} className="hidden shrink-0 text-[var(--gold)] lg:block" />}
             </div>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                   <Icon size={22} className="text-[#b9362d]" />
                 </div>
                 <h3 className="mt-4 text-lg font-black">{c.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{c.text}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--foreground-dim)]">{c.text}</p>
               </div>
             );
           })}
@@ -195,7 +195,7 @@ export default function AboutPage() {
       {/* Tech stack */}
       <section className="mb-16">
         <h2 className="text-3xl font-black">技术栈</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-[var(--foreground-dim)]">
           平台采用现代 Web 技术栈搭建，兼顾生成体验、3D 表现与可分享性。
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -209,7 +209,7 @@ export default function AboutPage() {
             "阿里云百炼 (AI 策展人)",
             "OG 分享图",
           ].map((tech) => (
-            <span key={tech} className="rounded-full border border-[var(--line)] bg-white/62 px-4 py-2 text-sm font-bold">
+            <span key={tech} className="rounded-full border border-[var(--line)] bg-white/5 px-4 py-2 text-sm font-bold">
               {tech}
             </span>
           ))}
@@ -217,9 +217,9 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="glass-panel rounded-[32px] bg-linear-to-r from-[#fdf6e3] to-[#fff9f0] p-12 text-center">
+      <section className="glass-panel rounded-[32px] p-12 text-center">
         <h2 className="text-3xl font-black">每一次创作，都是一次传承</h2>
-        <p className="mx-auto mt-4 max-w-xl text-[var(--muted)]">
+        <p className="mx-auto mt-4 max-w-xl text-[var(--foreground-dim)]">
           当越来越多人愿意亲手创造非遗，这些古老的技艺才真正活在了当下。
         </p>
         <Link href="/create" className="gold-button mx-auto mt-8 inline-flex items-center gap-2 px-8 py-4 text-lg">

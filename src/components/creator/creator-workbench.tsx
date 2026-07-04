@@ -175,18 +175,18 @@ export function CreatorWorkbench() {
 
       {/* Scene templates — one-click content entry, strengthens creation flow */}
       <div className="mb-6">
-        <div className="mb-3 text-sm font-black text-[var(--muted)]">从场景模板开始（一键填好主题与工艺）</div>
+        <div className="mb-3 text-sm font-black text-[var(--foreground-dim)]">从场景模板开始（一键填好主题与工艺）</div>
         <div className="mobile-option-strip flex w-full max-w-full snap-x gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {sceneTemplates.map((t) => (
             <button
               key={t.id}
               onClick={() => applyTemplate(t)}
-              className="group flex w-[214px] shrink-0 snap-start items-center gap-2 rounded-2xl border border-[var(--line)] bg-white/62 px-3 py-2.5 text-left transition hover:-translate-y-0.5 hover:border-[var(--gold)] hover:bg-white sm:w-auto sm:px-4"
+              className="group flex w-[214px] shrink-0 snap-start items-center gap-2 rounded-2xl border border-[var(--line)] bg-white/5 px-3 py-2.5 text-left transition hover:-translate-y-0.5 hover:border-[var(--gold)] hover:bg-white/8 sm:w-auto sm:px-4"
             >
               <span className="text-lg">{t.emoji}</span>
               <span className="min-w-0">
                 <span className="block text-sm font-black">{t.label}</span>
-                <span className="block truncate text-xs text-[var(--muted)] sm:whitespace-normal">{t.desc}</span>
+                <span className="block truncate text-xs text-[var(--foreground-dim)] sm:whitespace-normal">{t.desc}</span>
               </span>
             </button>
           ))}
@@ -197,7 +197,7 @@ export function CreatorWorkbench() {
         {/* Left panel: Input */}
         <section className="glass-panel min-w-0 rounded-[28px] p-4 sm:p-5">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-black text-[var(--muted)]">灵感主题</label>
+            <label className="text-sm font-black text-[var(--foreground-dim)]">灵感主题</label>
             <button onClick={shuffleInspiration} className="flex items-center gap-1 text-xs font-bold text-[var(--gold)] hover:underline">
               <Shuffle size={13} /> 换一个灵感
             </button>
@@ -208,7 +208,7 @@ export function CreatorWorkbench() {
               setPrompt(event.target.value);
               setShowVariants(false);
             }}
-            className="mt-3 min-h-28 w-full rounded-2xl border border-[var(--line)] bg-white/70 p-4 text-base font-bold outline-none focus:border-[var(--gold)] sm:min-h-32 sm:text-lg"
+            className="mt-3 min-h-28 w-full rounded-2xl border border-[var(--line)] bg-white/8 p-4 text-base font-bold text-[var(--foreground)] outline-none focus:border-[var(--gold)] placeholder:text-[var(--foreground-muted)] sm:min-h-32 sm:text-lg"
             placeholder="输入祝福、场景或主题..."
           />
           <div className="mobile-option-strip mt-5 flex w-full max-w-full snap-x gap-2 overflow-x-auto pb-1 sm:gap-3 lg:grid lg:grid-cols-1 lg:overflow-visible lg:pb-0">
@@ -221,7 +221,7 @@ export function CreatorWorkbench() {
                   setShowVariants(false);
                 }}
                 className={`w-[154px] shrink-0 snap-start rounded-2xl border p-3 text-left transition sm:w-[178px] sm:p-4 lg:w-auto ${
-                  craft === item.id ? "border-[var(--gold)] bg-[#f6e6bd]" : "border-[var(--line)] bg-white/54 hover:bg-white/80"
+                  craft === item.id ? "border-[var(--gold)] bg-[var(--gold)]/15" : "border-[var(--line)] bg-white/5 hover:bg-white/8"
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -232,14 +232,14 @@ export function CreatorWorkbench() {
                   </div>
                   <span className="font-black">{item.name}</span>
                 </div>
-                <div className="mt-1 line-clamp-2 text-xs leading-5 text-[var(--muted)] sm:text-sm sm:leading-6">{item.tagline}</div>
+                <div className="mt-1 line-clamp-2 text-xs leading-5 text-[var(--foreground-dim)] sm:text-sm sm:leading-6">{item.tagline}</div>
               </button>
             ))}
           </div>
 
           {/* Motif picker — richer content wired into generation */}
           <div className="mt-6">
-            <label className="text-sm font-black text-[var(--muted)]">选择纹样母题</label>
+            <label className="text-sm font-black text-[var(--foreground-dim)]">选择纹样母题</label>
             <div className="mt-3 grid grid-cols-2 gap-2">
               {craftData.motifs.map((motif, i) => (
                 <button
@@ -249,11 +249,11 @@ export function CreatorWorkbench() {
                     setShowVariants(false);
                   }}
                   className={`rounded-xl border p-3 text-left text-sm transition ${
-                    motifIndex === i ? "border-[var(--gold)] bg-[#f6e6bd]" : "border-[var(--line)] bg-white/54 hover:bg-white/80"
+                    motifIndex === i ? "border-[var(--gold)] bg-[var(--gold)]/15" : "border-[var(--line)] bg-white/5 hover:bg-white/8"
                   }`}
                 >
                   <div className="font-black">{motif.name}</div>
-                  <div className="mt-1 line-clamp-1 text-xs text-[var(--muted)]">{motif.meaning}</div>
+                  <div className="mt-1 line-clamp-1 text-xs text-[var(--foreground-dim)]">{motif.meaning}</div>
                 </button>
               ))}
             </div>
@@ -291,14 +291,14 @@ export function CreatorWorkbench() {
               )}
             </div>
           </div>
-          <div className="rounded-[26px] bg-[#161321] p-4 shadow-inner">
+          <div className="rounded-[26px] bg-[var(--bg-deep)] p-4 shadow-inner">
             <canvas ref={canvasRef} width={720} height={720} className="aspect-square w-full rounded-[20px]" />
           </div>
 
           {/* Variant picker */}
           {showVariants && (
             <div className="mt-4">
-              <div className="mb-2 flex items-center gap-2 text-sm font-black text-[var(--muted)]">
+              <div className="mb-2 flex items-center gap-2 text-sm font-black text-[var(--foreground-dim)]">
                 <RotateCw size={14} /> 选择你喜欢的变体
               </div>
               <div ref={variantContainerRef} className="grid grid-cols-3 gap-3">
@@ -306,7 +306,7 @@ export function CreatorWorkbench() {
                   <button
                     key={i}
                     onClick={() => pickVariant(i)}
-                    className={`overflow-hidden rounded-2xl border-2 bg-[#161321] p-1 transition ${
+                    className={`overflow-hidden rounded-2xl border-2 bg-[var(--bg-deep)] p-1 transition ${
                       activeVariant === i ? "border-[var(--gold)]" : "border-transparent hover:border-[var(--line)]"
                     }`}
                   >
@@ -325,12 +325,12 @@ export function CreatorWorkbench() {
             AI 策展人草案
           </div>
           <h2 className="mt-3 text-2xl font-black">{activeMotif.name}</h2>
-          <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{activeMotif.story}</p>
-          <div className="mt-5 rounded-2xl bg-white/58 p-4">
+          <p className="mt-3 text-sm leading-7 text-[var(--foreground-dim)]">{activeMotif.story}</p>
+          <div className="mt-5 rounded-2xl bg-white/5 p-4">
             <div className="text-sm font-black">推荐落地</div>
-            <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{craftData.products.join(" / ")}</p>
+            <p className="mt-2 text-sm leading-6 text-[var(--foreground-dim)]">{craftData.products.join(" / ")}</p>
           </div>
-          <div className="mt-5 rounded-2xl bg-white/58 p-4">
+          <div className="mt-5 rounded-2xl bg-white/5 p-4">
             <div className="text-sm font-black">色板</div>
             <div className="mt-2 flex gap-2">
               {craftData.palette.map((c, i) => (
@@ -346,7 +346,7 @@ export function CreatorWorkbench() {
             {saving ? "正在生成提案..." : "生成作品提案页"}
           </button>
           {saveError && (
-            <p className="mt-3 rounded-2xl bg-[#b9362d]/10 p-3 text-sm font-bold leading-6 text-[#8f2a24]">
+            <p className="mt-3 rounded-2xl bg-[var(--cinnabar)]/15 p-3 text-sm font-bold leading-6 text-[var(--cinnabar-soft)]">
               {saveError}
             </p>
           )}

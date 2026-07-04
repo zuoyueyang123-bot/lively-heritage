@@ -14,7 +14,7 @@ export default function Home() {
             <br />
             一套非遗文创提案。
           </h1>
-          <p className="mt-5 max-w-md text-lg leading-8 text-[var(--muted)]">
+          <p className="mt-5 max-w-md text-lg leading-8 text-[var(--foreground-dim)]">
             选一种非遗工艺，写下你的主题，30 秒拿到纹样、产品图和可分享的作品页。
           </p>
           <div className="mt-8 flex gap-3">
@@ -25,7 +25,7 @@ export default function Home() {
               看看作品
             </Link>
           </div>
-          <div className="mt-8 flex gap-6 text-sm text-[var(--muted)]">
+          <div className="mt-8 flex gap-6 text-sm text-[var(--foreground-dim)]">
             <span><b className="text-[var(--ink)]">11</b> 种工艺</span>
             <span><b className="text-[var(--ink)]">50+</b> 母题</span>
             <span><b className="text-[var(--ink)]">30s</b> 出提案</span>
@@ -46,13 +46,13 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-2 text-lg font-black">{craft.name}</div>
-              <div className="text-xs text-[var(--muted)]">{craft.origin}</div>
+              <div className="text-xs text-[var(--foreground-dim)]">{craft.origin}</div>
             </Link>
           ))}
           <Link href="/heritage" className="glass-panel grid place-items-center rounded-[18px] p-4 text-center transition hover:shadow-lg">
             <div>
               <div className="font-black text-[var(--gold)]">更多</div>
-              <div className="text-xs text-[var(--muted)]">11 种工艺 →</div>
+              <div className="text-xs text-[var(--foreground-dim)]">11 种工艺 →</div>
             </div>
           </Link>
         </div>
@@ -62,7 +62,7 @@ export default function Home() {
       <section className="page-shell py-12">
         <div className="glass-panel rounded-[24px] p-8 text-center sm:p-10">
           <h2 className="text-2xl font-black">30 秒做一件非遗文创</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-[var(--muted)]">
+          <p className="mx-auto mt-3 max-w-md text-sm text-[var(--foreground-dim)]">
             选工艺、写主题、点生成。拿到提案，发给朋友。
           </p>
           <Link href="/create" className="gold-button mx-auto mt-6 inline-flex items-center gap-2 px-8 py-4">

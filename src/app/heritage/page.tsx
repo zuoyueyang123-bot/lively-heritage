@@ -13,7 +13,7 @@ export default function HeritagePage() {
     <main className="page-shell py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-black">非遗图鉴</h1>
-        <p className="mt-2 max-w-lg text-[var(--muted)]">
+        <p className="mt-2 max-w-lg text-[var(--foreground-dim)]">
           11 种工艺，每种都能生成纹样。看到喜欢的，直接点进去创作。
         </p>
       </div>

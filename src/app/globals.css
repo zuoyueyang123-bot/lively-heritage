@@ -1,18 +1,51 @@
 @import "tailwindcss";
 
+/* ==============================================
+   非遗有灵 · 国风赛博主题
+   深空炭黑 + 青瓷流光 + 剪纸纹样 + 银电路
+   ============================================== */
+
 :root {
-  --background: #f6f0e7;
-  --foreground: #211915;
-  --ink: #211915;
-  --muted: #786f64;
-  --paper: #fffaf2;
-  --paper-deep: #efe4d4;
-  --gold: #b8860b;
-  --gold-soft: #e8c66a;
-  --cinnabar: #b7362f;
-  --indigo: #174f75;
-  --jade: #1f7664;
-  --line: rgba(77, 55, 30, 0.14);
+  /* Core palette - 深空炭黑系 */
+  --bg-deep: #0a0c14;
+  --bg-mid: #0f111d;
+  --bg-surface: #151827;
+  --bg-elevated: #1a1d30;
+
+  /* Foreground */
+  --foreground: #e8e4dd;
+  --foreground-dim: #9a958a;
+  --foreground-muted: #6b6560;
+
+  /* Accent colors */
+  --gold: #c9984a;
+  --gold-soft: #e0c878;
+  --gold-dim: rgba(201, 152, 74, 0.5);
+  --cyan: #5ec4b0;
+  --cyan-soft: #7dd8c8;
+  --cyan-dim: rgba(94, 196, 176, 0.35);
+  --cinnabar: #d44a3d;
+  --cinnabar-soft: #e86055;
+  --indigo: #4a7db5;
+  --jade: #3d8b7a;
+  --silver: #8a8fa8;
+  --silver-dim: rgba(138, 143, 168, 0.3);
+
+  /* Borders & lines */
+  --line: rgba(138, 143, 168, 0.18);
+  --line-strong: rgba(138, 143, 168, 0.28);
+
+  /* Glass panels */
+  --glass-bg: rgba(21, 24, 39, 0.72);
+  --glass-border: rgba(138, 143, 168, 0.16);
+  --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+
+  /* Legacy compat */
+  --background: var(--bg-deep);
+  --ink: var(--foreground);
+  --muted: var(--foreground-muted);
+  --paper: var(--bg-surface);
+  --paper-deep: var(--bg-elevated);
 }
 
 @theme inline {
@@ -36,11 +69,116 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 8%, rgba(184, 134, 11, 0.16), transparent 28%),
-    radial-gradient(circle at 88% 18%, rgba(23, 79, 117, 0.14), transparent 30%),
-    linear-gradient(180deg, #f8f1e7 0%, #efe2d1 52%, #ead9c2 100%);
+    /* 深空炭黑底层 */
+    radial-gradient(ellipse at 20% 10%, rgba(30, 40, 70, 0.6), transparent 55%),
+    radial-gradient(ellipse at 75% 15%, rgba(20, 50, 55, 0.5), transparent 50%),
+    radial-gradient(ellipse at 50% 60%, rgba(25, 20, 40, 0.5), transparent 60%),
+    radial-gradient(ellipse at 85% 80%, rgba(40, 30, 20, 0.25), transparent 45%),
+    linear-gradient(175deg, #0a0c14 0%, #0f111d 28%, #111420 52%, #0e1018 78%, #0a0c14 100%);
   color: var(--foreground);
   font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+/* 半透青瓷纹理薄纱叠加 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* 青瓷纹理 */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(94, 196, 176, 0.015) 3px,
+      rgba(94, 196, 176, 0.015) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(94, 196, 176, 0.01) 3px,
+      rgba(94, 196, 176, 0.01) 4px
+    ),
+    /* 细银电路纹路 */
+    radial-gradient(circle at 15% 20%, rgba(138, 143, 168, 0.06) 0%, transparent 25%),
+    radial-gradient(circle at 85% 75%, rgba(138, 143, 168, 0.05) 0%, transparent 25%),
+    /* 低饱和淡金辉光 */
+    radial-gradient(ellipse at 30% 15%, rgba(201, 152, 74, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 50%, rgba(201, 152, 74, 0.05) 0%, transparent 35%),
+    /* 冷暖质感对冲 */
+    radial-gradient(circle at 45% 30%, rgba(94, 196, 176, 0.04) 0%, transparent 30%),
+    radial-gradient(circle at 60% 70%, rgba(212, 74, 61, 0.03) 0%, transparent 30%);
+  opacity: 0.85;
+}
+
+/* 悬浮浅青数据流光带 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(94, 196, 176, 0.03) 15%,
+      rgba(94, 196, 176, 0.06) 18%,
+      rgba(94, 196, 176, 0.03) 21%,
+      transparent 30%,
+      transparent 55%,
+      rgba(94, 196, 176, 0.03) 70%,
+      rgba(94, 196, 176, 0.05) 73%,
+      rgba(94, 196, 176, 0.03) 76%,
+      transparent 85%
+    );
+  animation: dataStream 8s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes dataStream {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translateX(2%);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-1%);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateX(1.5%);
+    opacity: 0.75;
+  }
+}
+
+/* 发光数字化剪纸缠枝纹样 - 背景装饰 */
+@keyframes vineGlow {
+  0%, 100% {
+    opacity: 0.35;
+    filter: blur(0.5px);
+  }
+  50% {
+    opacity: 0.55;
+    filter: blur(0px);
+  }
+}
+
+body .vine-pattern-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    /* 缠枝纹样 - 用SVG data URI */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Cg fill='none' stroke='%235ec4b0' stroke-width='0.6' opacity='0.12'%3E%3Cpath d='M140 20 Q160 50 140 80 Q120 110 140 140 Q160 170 140 200 Q120 230 140 260'/%3E%3Cpath d='M140 20 Q120 50 140 80 Q160 110 140 140 Q120 170 140 200 Q160 230 140 260'/%3E%3Cpath d='M20 140 Q50 120 80 140 Q110 160 140 140 Q170 120 200 140 Q230 160 260 140'/%3E%3Cpath d='M20 140 Q50 160 80 140 Q110 120 140 140 Q170 160 200 140 Q230 120 260 140'/%3E%3Ccircle cx='140' cy='140' r='4' fill='%235ec4b0' opacity='0.4'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%235ec4b0' opacity='0.3'/%3E%3Ccircle cx='230' cy='50' r='2' fill='%235ec4b0' opacity='0.3'/%3E%3Ccircle cx='50' cy='230' r='2' fill='%235ec4b0' opacity='0.3'/%3E%3Ccircle cx='230' cy='230' r='2' fill='%235ec4b0' opacity='0.3'/%3E%3C/g%3E%3C/svg%3E");
+  animation: vineGlow 6s ease-in-out infinite;
 }
 
 a {
@@ -63,46 +201,109 @@ canvas {
   display: block;
 }
 
+/* ==============================================
+   Layout Utilities
+   ============================================== */
+
 .page-shell {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
   width: min(1180px, calc(100% - 32px));
 }
 
+/* ==============================================
+   Glass Panel - 玻璃质感面板
+   ============================================== */
+
 .glass-panel {
-  border: 1px solid var(--line);
-  background: rgba(255, 250, 242, 0.76);
-  box-shadow: 0 24px 70px rgba(70, 47, 20, 0.12);
+  position: relative;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(94, 196, 176, 0.04) 0%,
+    transparent 40%,
+    rgba(201, 152, 74, 0.04) 100%
+  );
+  pointer-events: none;
+}
+
+/* ==============================================
+   Gold Button - 金箔按钮
+   ============================================== */
+
 .gold-button {
+  position: relative;
   border-radius: 999px;
-  background: linear-gradient(135deg, #c9941f, #edcf75);
-  color: #24190c;
+  background: linear-gradient(135deg, #b8862e, #d4a84b 40%, #e8c66a 60%, #c9982e);
+  color: #0f0c08;
   font-weight: 800;
-  box-shadow: 0 14px 34px rgba(184, 134, 11, 0.24);
+  box-shadow:
+    0 4px 20px rgba(201, 152, 74, 0.3),
+    0 0 40px rgba(201, 152, 74, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .gold-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 40px rgba(184, 134, 11, 0.3);
+  box-shadow:
+    0 8px 30px rgba(201, 152, 74, 0.4),
+    0 0 60px rgba(201, 152, 74, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
+
+.gold-button:active {
+  transform: translateY(0);
+}
+
+/* ==============================================
+   Quiet Button - 低调按钮
+   ============================================== */
 
 .quiet-button {
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: rgba(255, 250, 242, 0.72);
-  color: var(--ink);
+  background: rgba(21, 24, 39, 0.6);
+  color: var(--foreground);
   font-weight: 700;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
+
+.quiet-button:hover {
+  background: rgba(30, 35, 55, 0.8);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+/* ==============================================
+   Typography
+   ============================================== */
 
 .section-title {
   font-size: clamp(28px, 4vw, 54px);
   line-height: 1.12;
   font-weight: 900;
   letter-spacing: 0;
+  text-shadow: 0 0 40px rgba(201, 152, 74, 0.15);
 }
+
+/* ==============================================
+   Scrollbar
+   ============================================== */
 
 .mobile-scrollbar-none {
   scrollbar-width: none;
@@ -121,13 +322,10 @@ canvas {
   display: none;
 }
 
-/* Enhanced visual utilities */
-.quiet-button:hover {
-  background: rgba(255, 250, 242, 0.92);
-  transform: translateY(-1px);
-}
+/* ==============================================
+   Animations
+   ============================================== */
 
-/* Smooth entrance animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -144,38 +342,127 @@ canvas {
   100% { background-position: 200% 0; }
 }
 
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 152, 74, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(201, 152, 74, 0); }
+}
+
+@keyframes cyanPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(94, 196, 176, 0.2), 0 0 20px rgba(94, 196, 176, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(94, 196, 176, 0.35), 0 0 35px rgba(94, 196, 176, 0.1);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Gold gradient text helper */
+/* ==============================================
+   Text Effects
+   ============================================== */
+
 .gold-text {
-  background: linear-gradient(135deg, var(--gold), #c9941f, #edcf75);
+  background: linear-gradient(135deg, #c9984a, #d4a84b, #e8c66a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Subtle glass shimmer effect */
+.cyan-text {
+  background: linear-gradient(135deg, #5ec4b0, #7dd8c8, #5ec4b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==============================================
+   Glass Shimmer
+   ============================================== */
+
 .glass-shimmer {
   background: linear-gradient(
     110deg,
     transparent 20%,
-    rgba(255, 255, 255, 0.12) 40%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.12) 60%,
+    rgba(94, 196, 176, 0.06) 40%,
+    rgba(94, 196, 176, 0.1) 50%,
+    rgba(94, 196, 176, 0.06) 60%,
     transparent 80%
   );
   background-size: 200% 100%;
   animation: shimmer 4s linear infinite;
 }
 
-/* Progress bar pulse */
-@keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.3); }
-  50% { box-shadow: 0 0 0 6px rgba(184, 134, 11, 0); }
-}
+/* ==============================================
+   Progress
+   ============================================== */
 
 .pulse-gold {
   animation: pulse-gold 2s infinite;
+}
+
+/* ==============================================
+   Cyan Glow Card
+   ============================================== */
+
+.cyan-glow {
+  animation: cyanPulse 3s ease-in-out infinite;
+}
+
+/* ==============================================
+   Circuit Line Decoration
+   ============================================== */
+
+.circuit-accent {
+  position: relative;
+}
+
+.circuit-accent::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(94, 196, 176, 0.4) 20%,
+    rgba(138, 143, 168, 0.5) 50%,
+    rgba(94, 196, 176, 0.4) 80%,
+    transparent 100%
+  );
+}
+
+/* ==============================================
+   Accessibility - Reduced Motion
+   ============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==============================================
+   Mobile Optimizations
+   ============================================== */
+
+@media (max-width: 767px) {
+  body::before,
+  body::after {
+    opacity: 0.5;
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }

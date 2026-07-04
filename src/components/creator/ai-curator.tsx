@@ -52,7 +52,7 @@ export function AiCurator({
   }
 
   return (
-    <div className="mt-5 rounded-2xl border border-[var(--line)] bg-white/58 p-4">
+    <div className="mt-5 rounded-2xl border border-[var(--line)] bg-white/5 p-4">
       <div className="flex items-center gap-2 text-sm font-black text-[var(--gold)]">
         <MessageCircle size={16} />
         问问 AI 策展人
@@ -65,7 +65,7 @@ export function AiCurator({
             key={s}
             onClick={() => ask(s)}
             disabled={loading}
-            className="rounded-full border border-[var(--line)] bg-white/70 px-3 py-1.5 text-xs font-bold text-[var(--muted)] transition hover:bg-white disabled:opacity-50"
+            className="rounded-full border border-[var(--line)] bg-white/8 px-3 py-1.5 text-xs font-bold text-[var(--foreground-dim)] transition hover:bg-white/12 disabled:opacity-50"
           >
             {s}
           </button>
@@ -74,11 +74,11 @@ export function AiCurator({
 
       {/* Answer area */}
       {(loading || answer) && (
-        <div className="mt-3 rounded-xl bg-[#fdf6e3] p-3">
+        <div className="mt-3 rounded-xl bg-[var(--bg-elevated)] p-3">
           {asked && <div className="text-xs font-bold text-[var(--gold)]">Q：{asked}</div>}
-          <div className="mt-1 text-sm leading-6 text-[var(--ink)]">
+          <div className="mt-1 text-sm leading-6 text-[var(--foreground)]">
             {loading ? (
-              <span className="flex items-center gap-2 text-[var(--muted)]">
+              <span className="flex items-center gap-2 text-[var(--foreground-dim)]">
                 <Loader2 size={14} className="animate-spin" /> 策展人思考中...
               </span>
             ) : (
@@ -97,7 +97,7 @@ export function AiCurator({
             if (e.key === "Enter") ask(question);
           }}
           placeholder="也可以自己提问..."
-          className="min-w-0 flex-1 rounded-xl border border-[var(--line)] bg-white/70 px-3 py-2 text-sm outline-none focus:border-[var(--gold)]"
+          className="min-w-0 flex-1 rounded-xl border border-[var(--line)] bg-white/8 px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-[var(--gold)] placeholder:text-[var(--foreground-muted)]"
         />
         <button
           onClick={() => ask(question)}

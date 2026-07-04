@@ -23,8 +23,8 @@ export default async function Image({
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "linear-gradient(135deg,#fffaf2,#ead9c2)",
-          color: "#211915",
+          background: "linear-gradient(135deg,#0f111d,#151827,#0a0c14)",
+          color: "#e8e4dd",
           padding: 64,
           gap: 44,
           fontFamily: "sans-serif",
@@ -35,7 +35,7 @@ export default async function Image({
             width: 440,
             height: 440,
             borderRadius: 36,
-            background: "#171326",
+            background: "#151827",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -50,13 +50,13 @@ export default async function Image({
           )}
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <div style={{ color: "#b8860b", fontSize: 28, fontWeight: 900, letterSpacing: 4 }}>
+          <div style={{ color: "#e8c66a", fontSize: 28, fontWeight: 900, letterSpacing: 4 }}>
             Lively Heritage
           </div>
           <div style={{ marginTop: 22, fontSize: 64, fontWeight: 900, lineHeight: 1.06 }}>
             {artwork?.title || "非遗文创提案"}
           </div>
-          <div style={{ marginTop: 24, fontSize: 30, fontWeight: 700, color: "#786f64", lineHeight: 1.35 }}>
+          <div style={{ marginTop: 24, fontSize: 30, fontWeight: 700, color: "#9a958a", lineHeight: 1.35 }}>
             {artwork?.prompt || "输入灵感，生成非遗纹样、3D文创贴图和可分享作品页。"}
           </div>
           <div style={{ marginTop: 40, display: "flex", gap: 14 }}>
@@ -66,8 +66,8 @@ export default async function Image({
                 style={{
                   padding: "12px 18px",
                   borderRadius: 999,
-                  background: "rgba(184,134,11,0.16)",
-                  color: "#6f4f0b",
+                  background: "rgba(201,152,74,0.15)",
+                  color: "#c9984a",
                   fontSize: 22,
                   fontWeight: 900,
                 }}

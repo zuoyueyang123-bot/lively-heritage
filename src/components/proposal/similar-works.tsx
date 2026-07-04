@@ -49,7 +49,7 @@ export function SimilarWorks({ craft, currentSlug }: { craft: CraftId; currentSl
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={item.patternImage} alt={item.title} className="aspect-square w-full object-cover" />
               ) : (
-                <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[#161321] object-cover" />
+                <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[var(--bg-deep)] object-cover" />
               )}
               <div className="p-4">
                 <div className="flex items-center gap-2">
@@ -58,10 +58,10 @@ export function SimilarWorks({ craft, currentSlug }: { craft: CraftId; currentSl
                       <div key={i} className="h-2 w-2 rounded-full" style={{ background: col }} />
                     ))}
                   </div>
-                  <span className="text-xs font-bold text-[var(--muted)]">{item.craftName}</span>
+                  <span className="text-xs font-bold text-[var(--foreground-dim)]">{item.craftName}</span>
                 </div>
                 <div className="mt-2 font-black">{item.title}</div>
-                <p className="mt-1 line-clamp-1 text-sm text-[var(--muted)]">{item.prompt}</p>
+                <p className="mt-1 line-clamp-1 text-sm text-[var(--foreground-dim)]">{item.prompt}</p>
               </div>
             </Link>
           );

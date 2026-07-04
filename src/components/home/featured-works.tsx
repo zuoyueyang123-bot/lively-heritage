@@ -14,7 +14,7 @@ export function FeaturedWorks() {
         <div>
           <div className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold)]">Featured</div>
           <h2 className="mt-2 text-4xl font-black">看看别人炼出了什么</h2>
-          <p className="mt-2 text-[var(--muted)]">每一件都是一句灵感生成的完整文创提案</p>
+          <p className="mt-2 text-[var(--foreground-dim)]">每一件都是一句灵感生成的完整文创提案</p>
         </div>
         <Link href="/gallery" className="quiet-button px-5 py-3">
           进入作品广场
@@ -26,7 +26,7 @@ export function FeaturedWorks() {
           return (
             <Link key={item.slug} href={`/work/${item.slug}`} className="group glass-panel overflow-hidden rounded-[28px] transition hover:-translate-y-1 hover:shadow-xl">
               <div className="relative">
-                <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[#161321] object-cover" />
+                <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[var(--bg-deep)] object-cover" />
                 <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
                   <div className="flex w-full items-center justify-between p-5 text-white">
                     <span className="text-sm font-bold">查看提案</span>
@@ -41,10 +41,10 @@ export function FeaturedWorks() {
                       <div key={i} className="h-2 w-2 rounded-full" style={{ background: c }} />
                     ))}
                   </div>
-                  <span className="text-xs font-bold text-[var(--muted)]">{item.craftName}</span>
+                  <span className="text-xs font-bold text-[var(--foreground-dim)]">{item.craftName}</span>
                 </div>
                 <div className="mt-2 text-xl font-black">{item.title}</div>
-                <p className="mt-2 line-clamp-1 text-sm text-[var(--muted)]">{item.prompt}</p>
+                <p className="mt-2 line-clamp-1 text-sm text-[var(--foreground-dim)]">{item.prompt}</p>
               </div>
             </Link>
           );

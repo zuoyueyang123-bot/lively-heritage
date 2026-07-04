@@ -67,7 +67,7 @@ export function GalleryClient() {
       <div className="mb-8">
         <div className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold)]">Gallery</div>
         <h1 className="section-title mt-2">作品广场</h1>
-        <p className="mt-3 max-w-2xl text-lg font-semibold text-[var(--muted)]">
+        <p className="mt-3 max-w-2xl text-lg font-semibold text-[var(--foreground-dim)]">
           展示已生成的非遗文创提案，每个作品都有独立的提案页、3D 贴图和产品 mockup。
         </p>
       </div>
@@ -77,7 +77,7 @@ export function GalleryClient() {
         <div className="mobile-option-strip flex max-w-full gap-2 overflow-x-auto pb-1 lg:flex-wrap lg:overflow-visible lg:pb-0">
           <button
             onClick={() => setCraftFilter("all")}
-            className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-black transition ${craftFilter === "all" ? "bg-[var(--gold)] text-white shadow-md shadow-[var(--gold)]/20" : "border border-[var(--line)] bg-white/70 text-[var(--muted)] hover:bg-white"}`}
+            className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-black transition ${craftFilter === "all" ? "bg-[var(--gold)] text-white shadow-md shadow-[var(--gold)]/20" : "border border-[var(--line)] bg-white/5 text-[var(--foreground-dim)] hover:bg-white/8"}`}
           >
             全部
           </button>
@@ -85,19 +85,19 @@ export function GalleryClient() {
             <button
               key={craft.id}
               onClick={() => setCraftFilter(craft.id)}
-              className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-black transition ${craftFilter === craft.id ? "bg-[var(--gold)] text-white shadow-md shadow-[var(--gold)]/20" : "border border-[var(--line)] bg-white/70 text-[var(--muted)] hover:bg-white"}`}
+              className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-black transition ${craftFilter === craft.id ? "bg-[var(--gold)] text-white shadow-md shadow-[var(--gold)]/20" : "border border-[var(--line)] bg-white/70 text-[var(--foreground-dim)] hover:bg-white"}`}
             >
               <span className="h-2 w-2 rounded-full" style={{ background: craft.palette[0] }} />
               {craft.name}
             </button>
           ))}
         </div>
-        <div className="flex shrink-0 gap-1 rounded-full border border-[var(--line)] bg-white/70 p-1">
+        <div className="flex shrink-0 gap-1 rounded-full border border-[var(--line)] bg-white/5 p-1">
           {([["latest", "最新"], ["popular", "热门"]] as const).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setSort(key)}
-              className={`rounded-full px-4 py-1.5 text-sm font-bold transition ${sort === key ? "bg-[var(--gold)] text-white" : "text-[var(--muted)]"}`}
+              className={`rounded-full px-4 py-1.5 text-sm font-bold transition ${sort === key ? "bg-[var(--gold)] text-white" : "text-[var(--foreground-dim)]"}`}
             >
               {label}
             </button>
@@ -116,7 +116,7 @@ export function GalleryClient() {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={item.patternImage} alt={item.title} className="aspect-square w-full object-cover" />
                 ) : (
-                  <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[#161321] object-cover" />
+                  <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[var(--bg-deep)] object-cover" />
                 )}
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
@@ -133,11 +133,11 @@ export function GalleryClient() {
                       <div key={i} className="h-2 w-2 rounded-full" style={{ background: c }} />
                     ))}
                   </div>
-                  <span className="text-xs font-bold text-[var(--muted)]">{item.craftName}</span>
+                  <span className="text-xs font-bold text-[var(--foreground-dim)]">{item.craftName}</span>
                 </div>
                 <div className="mt-2 text-xl font-black">{item.title}</div>
-                <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--muted)]">{item.prompt}</p>
-                <div className="mt-3 flex items-center gap-3 text-xs text-[var(--muted)]" suppressHydrationWarning>
+                <p className="mt-2 line-clamp-2 text-sm leading-6 text-[var(--foreground-dim)]">{item.prompt}</p>
+                <div className="mt-3 flex items-center gap-3 text-xs text-[var(--foreground-dim)]" suppressHydrationWarning>
                   <LikeViewStats slug={item.slug} />
                   <span className="flex items-center gap-1"><Clock size={12} /> {formatDate(item.createdAt)}</span>
                 </div>
@@ -149,8 +149,8 @@ export function GalleryClient() {
 
       {visibleItems.length === 0 && (
         <div className="rounded-[28px] border border-dashed border-[var(--line)] p-16 text-center">
-          <div className="text-xl font-bold text-[var(--muted)]">还没有作品</div>
-          <p className="mt-2 text-sm text-[var(--muted)]">去创作台生成你的第一个非遗文创提案吧</p>
+          <div className="text-xl font-bold text-[var(--foreground-dim)]">还没有作品</div>
+          <p className="mt-2 text-sm text-[var(--foreground-dim)]">去创作台生成你的第一个非遗文创提案吧</p>
           <Link href="/create" className="gold-button mt-6 inline-flex items-center gap-2 px-6 py-3">
             开始创作 <ArrowRight size={16} />
           </Link>
