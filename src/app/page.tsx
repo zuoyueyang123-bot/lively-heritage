@@ -3,6 +3,7 @@ import { ArrowRight, Boxes, GalleryHorizontalEnd, Share2, Sparkles, Palette, Lay
 import { crafts } from "@/lib/heritage";
 import { ShowroomScene } from "@/components/showroom/showroom-scene";
 import { HeroParticles } from "@/components/home/hero-particles";
+import { HeroShowroom } from "@/components/home/hero-showroom";
 import { FeaturedWorks } from "@/components/home/featured-works";
 
 const capabilities = [
@@ -56,7 +57,7 @@ export default function Home() {
           {/* 3D Showroom Hero */}
           <div className="glass-panel rounded-[36px] p-5 shadow-2xl">
             <div className="rounded-[28px] p-4 text-white" style={{ background: "linear-gradient(135deg, #1b1630, #0d0a1a)" }}>
-              <ShowroomScene variant="vase" showDownload={false} className="h-[320px] sm:h-[420px] lg:h-[480px]" />
+              <HeroShowroom />
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {[
                   { label: "景泰蓝花瓶", sub: "掐丝工艺 · 实时贴图" },
