@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <section className="page-shell grid min-h-[calc(100vh-64px)] items-center gap-8 py-12 lg:grid-cols-[1fr_0.85fr]">
+      <section className="page-shell grid items-center gap-8 py-12 lg:grid-cols-[1fr_0.85fr] lg:py-20">
         <div>
           <h1 className="section-title max-w-lg leading-[1.15]">
             一句灵感，
