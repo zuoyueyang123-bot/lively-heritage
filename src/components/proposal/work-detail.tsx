@@ -295,7 +295,7 @@ export function WorkDetail({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <ProductMockups artwork={{ ...artwork, patternImage }} />
+      {patternImage && <ProductMockups artwork={{ ...artwork, patternImage }} />}
 
       <SimilarWorks craft={artwork.craft} currentSlug={artwork.slug} />
     </main>

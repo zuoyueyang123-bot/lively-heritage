@@ -119,6 +119,7 @@ async function drawMockup(canvas: HTMLCanvasElement, artwork: Artwork, kind: Moc
 
   if (kind === "cup") {
     ctx.fillStyle = "rgba(0,0,0,0.14)";
+    ctx.beginPath();
     ctx.ellipse(w / 2, h * 0.78, 260, 42, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.lineWidth = 34;
@@ -148,6 +149,7 @@ async function drawMockup(canvas: HTMLCanvasElement, artwork: Artwork, kind: Moc
     ctx.fillStyle = curve;
     ctx.fillRect(w / 2 - topW / 2, topY, topW, cupH);
     ctx.restore();
+    ctx.beginPath();
     ctx.ellipse(w / 2, topY, topW / 2, 34, 0, 0, Math.PI * 2);
     ctx.fillStyle = "#f8f1e7";
     ctx.fill();
