@@ -217,7 +217,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="glass-panel rounded-[32px] bg-gradient-to-r from-[#fdf6e3] to-[#fff9f0] p-12 text-center">
+      <section className="glass-panel rounded-[32px] bg-linear-to-r from-[#fdf6e3] to-[#fff9f0] p-12 text-center">
         <h2 className="text-3xl font-black">每一次创作，都是一次传承</h2>
         <p className="mx-auto mt-4 max-w-xl text-[var(--muted)]">
           当越来越多人愿意亲手创造非遗，这些古老的技艺才真正活在了当下。

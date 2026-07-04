@@ -263,7 +263,7 @@ export function ShowroomScene({
   }
 
   return (
-    <div className={`relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-gradient-to-b from-[#221b33] to-[#12101d] ${className}`} id="feiyi-showroom-canvas">
+    <div className={`relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-linear-to-b from-[#221b33] to-[#12101d] ${className}`} id="feiyi-showroom-canvas">
       {showDownload ? (
         <button
           onClick={downloadShot}

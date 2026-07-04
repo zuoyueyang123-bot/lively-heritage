@@ -22,14 +22,14 @@ export default function Home() {
         <HeroParticles className="z-0" />
         <div className="page-shell relative z-10 grid min-h-[calc(100vh-64px)] items-center gap-10 py-16 lg:grid-cols-[1fr_0.9fr]">
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-gradient-to-r from-[#fdf6e3] to-white/80 px-5 py-2.5 text-sm font-black text-[var(--gold)] shadow-sm backdrop-blur">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-linear-to-r from-[#fdf6e3] to-white/80 px-5 py-2.5 text-sm font-black text-[var(--gold)] shadow-sm backdrop-blur">
               <Sparkles size={14} />
               非遗文创提案生成平台
             </div>
             <h1 className="section-title max-w-4xl leading-[1.15]">
               不只是看非遗，
               <br />
-              <span className="bg-gradient-to-r from-[var(--gold)] to-[#b9362d] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[var(--gold)] to-[#b9362d] bg-clip-text text-transparent">
                 把灵感炼成文创作品。
               </span>
             </h1>
@@ -55,7 +55,7 @@ export default function Home() {
 
           {/* 3D Showroom Hero */}
           <div className="glass-panel rounded-[36px] p-5 shadow-2xl">
-            <div className="rounded-[28px] bg-gradient-to-br from-[#1b1630] to-[#0d0a1a] p-4 text-white">
+            <div className="rounded-[28px] bg-linear-to-br from-[#1b1630] to-[#0d0a1a] p-4 text-white">
               <ShowroomScene variant="vase" showDownload={false} className="h-[320px] sm:h-[420px] lg:h-[480px]" />
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {[
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* Social Value / Mission Section */}
       <section className="page-shell py-16">
-        <div className="glass-panel rounded-[32px] bg-gradient-to-br from-[#1b1630] to-[#0d0a1a] p-10 text-white lg:p-14">
+        <div className="glass-panel rounded-[32px] bg-linear-to-br from-[#1b1630] to-[#0d0a1a] p-10 text-white lg:p-14">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <div>
               <div className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold-soft)]">Our Mission</div>
@@ -171,7 +171,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="page-shell py-16">
-        <div className="glass-panel rounded-[32px] bg-gradient-to-r from-[#fdf6e3] to-[#fff9f0] p-12 text-center">
+        <div className="glass-panel rounded-[32px] bg-linear-to-r from-[#fdf6e3] to-[#fff9f0] p-12 text-center">
           <h2 className="text-3xl font-black">准备好把灵感变成作品了吗？</h2>
           <p className="mx-auto mt-4 max-w-xl text-[var(--muted)]">
             选择一种非遗工艺，输入你的主题，30 秒内生成完整文创提案。

@@ -98,7 +98,7 @@ export function GalleryClient() {
                   <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[#161321] object-cover" />
                 )}
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
+                <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
                   <div className="flex w-full items-center justify-between p-5 text-white">
                     <span className="text-sm font-bold">查看提案</span>
                     <ArrowRight size={16} />

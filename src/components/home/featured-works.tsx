@@ -27,7 +27,7 @@ export function FeaturedWorks() {
             <Link key={item.slug} href={`/work/${item.slug}`} className="group glass-panel overflow-hidden rounded-[28px] transition hover:-translate-y-1 hover:shadow-xl">
               <div className="relative">
                 <PatternThumb craft={item.craft} prompt={item.prompt} className="aspect-square w-full bg-[#161321] object-cover" />
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
+                <div className="absolute inset-0 flex items-end bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition group-hover:opacity-100">
                   <div className="flex w-full items-center justify-between p-5 text-white">
                     <span className="text-sm font-bold">查看提案</span>
                     <ArrowRight size={16} />

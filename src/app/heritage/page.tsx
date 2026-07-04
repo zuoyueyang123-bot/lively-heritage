@@ -23,7 +23,7 @@ export default function HeritagePage() {
         {crafts.map((craft) => (
           <section key={craft.id} className="glass-panel overflow-hidden rounded-[32px]">
             {/* Header band */}
-            <div className="flex flex-col gap-4 border-b border-[var(--line)] bg-gradient-to-r from-[#fdf6e3] to-white/50 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-4 border-b border-[var(--line)] bg-linear-to-r from-[#fdf6e3] to-white/50 p-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="flex items-center gap-3">
                   <span className="text-4xl font-black">{craft.name}</span>
@@ -55,7 +55,7 @@ export default function HeritagePage() {
                 <div className="rounded-2xl border border-[var(--line)] bg-white/62 p-5">
                   <div className="text-xs font-black uppercase tracking-wide text-[var(--gold)]">代表性传承人</div>
                   <div className="mt-3 flex items-center gap-4">
-                    <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--gold)] to-[#b9362d] text-xl font-black text-white">
+                    <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-linear-to-br from-[var(--gold)] to-[#b9362d] text-xl font-black text-white">
                       {craft.inheritor.name.slice(0, 1)}
                     </div>
                     <div>
@@ -141,7 +141,7 @@ export default function HeritagePage() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="mt-10 glass-panel rounded-[28px] bg-gradient-to-r from-[#fdf6e3] to-[#fff9f0] p-8 text-center">
+      <div className="mt-10 glass-panel rounded-[28px] bg-linear-to-r from-[#fdf6e3] to-[#fff9f0] p-8 text-center">
         <h2 className="text-2xl font-black">读懂了非遗，不如亲手创造一次</h2>
         <p className="mt-3 text-[var(--muted)]">选择一种工艺，把你的灵感炼成属于自己的非遗文创提案。</p>
         <Link href="/create" className="gold-button mx-auto mt-6 inline-flex items-center gap-2 px-7 py-3">
