@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { ContactShadows, Environment, Float, OrbitControls } from "@react-three/drei";
-import { Camera } from "lucide-react";
+import { Box, Camera, Rotate3D } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, Suspense } from "react";
 import * as THREE from "three";
 
@@ -408,6 +408,72 @@ function TexturedObject({
   return <VaseModel textureUrl={textureUrl} />;
 }
 
+function StaticShowroomPreview({
+  textureUrl,
+  variant,
+  onEnable3d,
+  showDownload,
+}: {
+  textureUrl?: string;
+  variant: ShowroomVariant;
+  onEnable3d: () => void;
+  showDownload: boolean;
+}) {
+  const image = textureUrl || fallbackPattern();
+  const label = variant === "hoop" ? "苗绣绣绷" : variant === "fabric" ? "扎染挂布" : "景泰蓝花瓶";
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_18%,rgba(232,198,106,0.16),transparent_34%),linear-gradient(180deg,#151827,#0e1220)] p-6">
+      {showDownload ? (
+        <button
+          type="button"
+          onClick={onEnable3d}
+          className="quiet-button absolute right-3 top-3 z-10 flex items-center gap-2 bg-[#151827]/86 px-3 py-2 text-sm text-white sm:right-4 sm:top-4"
+        >
+          <Rotate3D size={15} />
+          开启 3D
+        </button>
+      ) : null}
+      <div className="relative h-[86%] w-[76%] max-w-[330px]">
+        <div className="absolute inset-x-8 bottom-0 h-8 rounded-full bg-black/35 blur-xl" />
+        {variant === "vase" ? (
+          <>
+            <div className="absolute left-1/2 top-[2%] h-[14%] w-[34%] -translate-x-1/2 rounded-t-full border-x-4 border-t-4 border-[#d7aa46] bg-[#2a2340]" />
+            <div
+              className="absolute left-1/2 top-[12%] h-[76%] w-[74%] -translate-x-1/2 rounded-[48%_48%_34%_34%/22%_22%_46%_46%] border-[5px] border-[#d7aa46] shadow-2xl"
+              style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
+            />
+            <div className="absolute left-1/2 top-[34%] h-2 w-[86%] -translate-x-1/2 rounded-full bg-[#d7aa46]" />
+            <div className="absolute left-1/2 bottom-[5%] h-[9%] w-[48%] -translate-x-1/2 rounded-full bg-[#8b6914]" />
+          </>
+        ) : variant === "hoop" ? (
+          <div className="absolute left-1/2 top-[10%] aspect-square w-[82%] -translate-x-1/2 rounded-full border-[14px] border-[#c69a54] bg-[#2a2340] p-4 shadow-2xl">
+            <div
+              className="h-full w-full rounded-full border-4 border-[#a97f3c]"
+              style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
+            />
+          </div>
+        ) : (
+          <>
+            <div className="absolute left-1/2 top-[4%] h-3 w-full -translate-x-1/2 rounded-full bg-[#5e3d1a]" />
+            <div
+              className="absolute inset-x-4 top-[7%] bottom-[4%] rounded-b-[36px] border border-white/10 shadow-2xl"
+              style={{ backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" }}
+            />
+          </>
+        )}
+        <div className="absolute inset-x-0 bottom-3 rounded-2xl bg-[#171326]/92 p-4 text-white shadow-lg backdrop-blur">
+          <div className="flex items-center gap-2 text-base font-black">
+            <Box size={17} />
+            {label}
+          </div>
+          <div className="mt-1 text-xs font-semibold text-white/62">稳定预览 · 纹样实时上物</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ShowroomScene({
   textureUrl,
   variant = "vase",
@@ -421,6 +487,7 @@ export function ShowroomScene({
 }) {
   const isMobile = useIsMobile();
   const [webglSupported, setWebglSupported] = useState(true);
+  const [enable3d, setEnable3d] = useState(false);
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
@@ -457,6 +524,22 @@ export function ShowroomScene({
     } catch {
       alert("3D截图失败，请重试");
     }
+  }
+
+  if (!enable3d) {
+    return (
+      <div
+        className={`relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-[#151827] ${className}`}
+        id="feiyi-showroom-canvas"
+      >
+        <StaticShowroomPreview
+          textureUrl={textureUrl}
+          variant={variant}
+          onEnable3d={() => setEnable3d(true)}
+          showDownload={showDownload}
+        />
+      </div>
+    );
   }
 
   /* Mobile + WebGL supported: use lightweight 3D scene */
