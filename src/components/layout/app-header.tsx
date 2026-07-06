@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 const links = [
   { href: "/create", label: "创作台", highlight: false },
   { href: "/gallery", label: "作品广场", highlight: false },
+  { href: "/demo-3d", label: "3D演示", highlight: false },
   { href: "/heritage", label: "📖 图鉴", highlight: true },
   { href: "/about", label: "关于", highlight: false },
 ];
