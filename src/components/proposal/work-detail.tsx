@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, useRef } from "react";
-import { Copy, Download, RotateCcw, Share2, Check } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Download, RotateCcw, Share2, Check } from "lucide-react";
 import { QRCodeSVG, QRCodeCanvas } from "qrcode.react";
 import { toPng } from "html-to-image";
 import { buildProposalPoster } from "@/lib/proposal-poster";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { ContactShadows, Environment, Float, OrbitControls } from "@react-three/drei";
 import { Camera } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, Suspense } from "react";
@@ -423,15 +423,18 @@ export function ShowroomScene({
   const [webglSupported, setWebglSupported] = useState(true);
 
   useEffect(() => {
-    try {
-      const c = document.createElement("canvas");
-      const supported = !!(
-        c.getContext("webgl2") || c.getContext("webgl")
-      );
-      setWebglSupported(supported);
-    } catch {
-      setWebglSupported(false);
-    }
+    const raf = requestAnimationFrame(() => {
+      try {
+        const c = document.createElement("canvas");
+        const supported = !!(
+          c.getContext("webgl2") || c.getContext("webgl")
+        );
+        setWebglSupported(supported);
+      } catch {
+        setWebglSupported(false);
+      }
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   function downloadShot() {
