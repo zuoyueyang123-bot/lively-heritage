@@ -13,7 +13,13 @@ export type CraftId =
 
 /** 生成算法家族：新工艺复用最接近的基础算法 */
 export type RenderStyle = "miao" | "jingtai" | "tieDye" | "paperCut" | "bluePrint";
-export type ShowroomKind = "vase" | "hoop" | "fabric";
+export type ShowroomKind =
+  | "vase"
+  | "hoop"
+  | "fabric"
+  | "cloisonne"
+  | "pouch"
+  | "lantern";
 
 export type Inheritor = {
   name: string;

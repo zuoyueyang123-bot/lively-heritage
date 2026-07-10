@@ -3,7 +3,15 @@
 import { Box, Rotate3D } from "lucide-react";
 import { type PointerEvent, useEffect, useMemo, useState } from "react";
 
-export type ShowroomVariant = "vase" | "hoop" | "fabric";
+export type ShowroomVariant =
+  | "vase"
+  | "hoop"
+  | "fabric"
+  | "lantern"
+  | "winepot"
+  | "pouch"
+  | "cloisonne"
+  | "bracelet";
 
 function fallbackPattern() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="#151827"/><circle cx="256" cy="256" r="160" fill="#d44a3d"/><circle cx="256" cy="256" r="92" fill="#c9984a"/><text x="256" y="276" text-anchor="middle" font-size="44" font-family="sans-serif" fill="#e8e4dd">非遗有灵</text></svg>`;
@@ -107,8 +115,8 @@ function FabricObject({ image }: { image: string }) {
 function ShowroomObject({ textureUrl, variant, rotation }: { textureUrl?: string; variant: ShowroomVariant; rotation: { x: number; y: number } }) {
   const image = textureUrl || fallbackPattern();
   const body = useMemo(() => {
-    if (variant === "hoop") return <HoopObject image={image} />;
-    if (variant === "fabric") return <FabricObject image={image} />;
+    if (variant === "hoop" || variant === "lantern") return <HoopObject image={image} />;
+    if (variant === "fabric" || variant === "pouch") return <FabricObject image={image} />;
     return <VaseObject image={image} />;
   }, [image, variant]);
 
@@ -142,7 +150,20 @@ export function ShowroomScene({
   showDownload?: boolean;
   className?: string;
 }) {
-  const label = variant === "hoop" ? "苗绣绣绷" : variant === "fabric" ? "扎染挂布" : "景泰蓝花瓶";
+  const label =
+    variant === "hoop"
+      ? "苗绣绣绷"
+      : variant === "fabric"
+        ? "扎染挂布"
+        : variant === "lantern"
+          ? "中式灯笼"
+          : variant === "winepot"
+            ? "紫砂壶"
+            : variant === "pouch"
+              ? "苗绣荷包"
+              : variant === "bracelet"
+                ? "真·手镯"
+                : "景泰蓝花瓶";
   const { rotation, dragProps } = useDragRotation();
 
   return (

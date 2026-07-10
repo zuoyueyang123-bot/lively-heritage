@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { crafts } from "@/lib/heritage";
-import { HeroShowcase } from "@/components/home/hero-showcase";
+import { HeroShowroomLoader } from "@/components/home/hero-showroom-loader";
 
 export default function Home() {
   return (
@@ -31,7 +31,7 @@ export default function Home() {
             <span><b className="text-[var(--ink)]">30s</b> 出提案</span>
           </div>
         </div>
-        <HeroShowcase />
+        <HeroShowroomLoader />
       </section>
 
       {/* Craft entry */}

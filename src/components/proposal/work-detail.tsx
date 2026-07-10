@@ -7,7 +7,7 @@ import { QRCodeSVG, QRCodeCanvas } from "qrcode.react";
 import { toPng } from "html-to-image";
 import { buildProposalPoster } from "@/lib/proposal-poster";
 import type { Artwork } from "@/lib/types";
-import { ShowroomScene } from "@/components/showroom/showroom-scene";
+import { HeritageModel3D } from "@/components/showroom/heritage-model";
 import { ProductMockups } from "@/components/mockup/product-mockups";
 import { generatePattern, type CraftAlgorithm } from "@/lib/pattern-engine";
 import { getCraft } from "@/lib/heritage";
@@ -333,10 +333,12 @@ export function WorkDetail({ slug }: { slug: string }) {
               当前纹样实时上物
             </span>
           </div>
-          <ShowroomScene
+          <HeritageModel3D
             textureUrl={patternImage}
             variant={craftInfo.showroom}
+            pattern={craftInfo.render === "jingtai" ? "cloisonne" : "miao"}
             className="h-[320px] sm:h-[420px]"
+            enableControls={true}
           />
         </div>
         <aside className="glass-panel rounded-[28px] p-5">

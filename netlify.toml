@@ -1,3 +1,9 @@
 [build]
   command = "npm run build"
   publish = ".next"
+
+[build.environment]
+  # Next 16 requires Node >= 20.9.0；显式锁定，避免 Netlify 默认版本过低导致 build 失败
+  NODE_VERSION = "22"
+  # 关闭 Turbopack 遥测，构建更干净
+  NEXT_TELEMETRY_DISABLED = "1"

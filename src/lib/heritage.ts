@@ -60,7 +60,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["绣绷", "帆布包", "手机壳", "毕业礼"],
     render: "miao",
-    showroom: "hoop",
+    showroom: "pouch",
   },
   {
     id: "jingtai",
@@ -234,7 +234,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["窗花", "红包", "灯笼", "节庆礼"],
     render: "paperCut",
-    showroom: "fabric",
+    showroom: "lantern",
   },
   {
     id: "bluePrint",

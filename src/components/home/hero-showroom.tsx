@@ -1,36 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ShowroomScene } from "@/components/showroom/showroom-scene";
-import { generatePattern } from "@/lib/pattern-engine";
-import { getCraft } from "@/lib/heritage";
+import { HeritageModel3D } from "@/components/showroom/heritage-model";
+import { HeroShowcase } from "@/components/home/hero-showcase";
 
 /**
- * Homepage hero 3D showroom with a pre-generated jingtai pattern.
- * Generates the texture on mount so the vase displays a real pattern
- * instead of the ugly fallback text.
+ * 首页 Hero 3D 花瓶展示。
+ * 桌面端渲染真实馆藏景泰蓝花瓶（cloisonne.glb，Minneapolis 博物馆 CC0，自带真实纹理），可自动旋转；
+ * 移动端窄屏 / prefers-reduced-motion / 不支持 WebGL 时降级为轻量 2D 景泰蓝纹样，
+ * 完全规避早年移动端 WebGL 崩溃问题。
  */
 export function HeroShowroom() {
-  const [texture, setTexture] = useState("");
+  const [use3D, setUse3D] = useState(true);
 
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      const canvas = document.createElement("canvas");
-      canvas.width = 512;
-      canvas.height = 512;
-      const craft = getCraft("jingtai");
-      generatePattern(canvas, craft.render, "非遗文创提案", craft.palette, 1.0, 3);
-      setTexture(canvas.toDataURL("image/png"));
-    });
-    return () => cancelAnimationFrame(raf);
+    const smallScreen = window.matchMedia("(max-width: 768px)").matches;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    let webgl = false;
+    try {
+      const c = document.createElement("canvas");
+      webgl = !!(
+        c.getContext("webgl2") ||
+        c.getContext("webgl") ||
+        c.getContext("experimental-webgl")
+      );
+    } catch {
+      webgl = false;
+    }
+    setUse3D(!smallScreen && !reduced && webgl);
   }, []);
 
+  if (!use3D) {
+    return (
+      <HeroShowcase craftId="jingtai" prompt="景泰蓝缠枝纹·非遗文创" detail={0} />
+    );
+  }
+
   return (
-    <ShowroomScene
-      variant="vase"
-      showDownload={false}
+    <HeritageModel3D
+      modelKey="cloisonne"
+      pattern="cloisonne"
       className="h-[320px] sm:h-[420px] lg:h-[480px]"
-      textureUrl={texture || undefined}
+      enableControls={false}
     />
   );
 }
