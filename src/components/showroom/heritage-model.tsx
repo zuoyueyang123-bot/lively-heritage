@@ -42,21 +42,14 @@ const BUILTIN: Record<string, ModelDef> = {
     credit: "18th C Chinese Cloisonne Vase, Minneapolis Institute of Art (CC0)",
     realTexture: true,
   },
-  vase: {
-    key: "vase",
-    url: "/models/products/vase.glb",
-    label: "花瓶·纹样载体",
-    category: "展品",
-    license: "CC-BY 3.0",
-    credit: "Vase by Poly Pizza",
-  },
-  bracelet: {
-    key: "bracelet",
+  silver_bangle: {
+    key: "silver_bangle",
     url: "/models/products/bracelet_poly.glb",
-    label: "真·手镯",
+    label: "银手镯·真实模型",
     category: "首饰",
     license: "CC0",
     credit: "Pearl Bracelet by Armory_3D (Poly Pizza, CC0)",
+    realTexture: true,
   },
   lantern: {
     key: "lantern",
@@ -120,11 +113,9 @@ export const BUILTIN_MODELS = Object.values(BUILTIN);
 // variant → 真实 GLB key；无对应真实模型的 variant（绣绷/挂布是平面织物，无免费 3D 源）走 CSS 3D 兜底
 const VARIANT_TO_KEY: Record<string, string> = {
   cloisonne: "cloisonne",
-  vase: "vase",
   lantern: "lantern",
   winepot: "winepot",
   pouch: "pouch",
-  bracelet: "bracelet",
   xianglu: "xianglu",
   miao_attire: "miao_attire",
   hoop: "",
@@ -451,7 +442,6 @@ export function HeritageModel3D({
 }
 
 // 预加载常用模型，加速首屏
-useGLTF.preload("/models/products/vase.glb");
 useGLTF.preload("/models/heritage/cloisonne/cloisonne.glb");
 useGLTF.preload("/models/products/bracelet_poly.glb");
 useGLTF.preload("/models/products/lantern_hunyuan.glb");

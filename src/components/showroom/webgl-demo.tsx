@@ -64,16 +64,6 @@ const MODELS: ModelDef[] = [
     realTexture: true,
   },
 
-  // ── 真·手镯（真实免费可商用 3D 模型，已下载）──
-  {
-    key: "bracelet",
-    url: "/models/products/bracelet_poly.glb",
-    label: "⭕ 真·手镯",
-    category: "首饰",
-    license: "CC0",
-    credit: "Pearl Bracelet by Armory_3D (Poly Pizza, CC0)",
-  },
-
   // ── 真实 3D 模型 ──
   {
     key: "silver_bangle",
@@ -94,15 +84,6 @@ const MODELS: ModelDef[] = [
     realTexture: true,
   },
 
-  // ── 白模/生活用品（Poly Pizza / Khronos）──
-  {
-    key: "vase",
-    url: "/models/products/vase.glb",
-    label: "景泰蓝纹样·白模",
-    category: "展品",
-    license: "CC-BY 3.0",
-    credit: "Vase by Poly Pizza",
-  },
   {
     key: "pouch_tc",
     url: "/models/products/pouch_tc.glb",
@@ -139,35 +120,8 @@ const MODELS: ModelDef[] = [
   //   credit: "Backpack by Poly Pizza",
   //   // 当前文件实际是人体角色模型（CharacterArmature），与标签严重不符，已下线
   // },
-  {
-    key: "mug",
-    url: "/models/products/mug.glb",
-    label: "陶瓷杯",
-    category: "生活用品",
-    license: "CC-BY 3.0",
-    credit: "Mug by Poly Pizza",
-    uvWrap: true,
-  },
-  {
-    key: "ring",
-    url: "/models/products/ring.glb",
-    label: "戒指(Poly)",
-    category: "首饰",
-    license: "CC-BY 3.0",
-    credit: "Ring by Poly Pizza",
-    noUV: true,
-  },
-  {
-    key: "tshirt",
-    url: "/models/products/tshirt.glb",
-    label: "T恤",
-    category: "衣物",
-    license: "CC-BY 3.0",
-    credit: "T-shirt by Poly Pizza",
-    noUV: true,
-  },
   // {
-  //   key: "shoe",
+    //   key: "shoe",
   //   url: "/models/life/shoe_poly.glb",
   //   label: "绣品载体·鞋",
   //   category: "衣物",
@@ -176,22 +130,6 @@ const MODELS: ModelDef[] = [
   //   noUV: true,
   //   // 当前模型是黑色运动鞋，贴苗绣效果丑，已下线；如需保留鞋类需找更好素材
   // },
-  {
-    key: "chair",
-    url: "/models/life/SheenChair.glb",
-    label: "家具·椅",
-    category: "生活用品",
-    license: "CC0",
-    credit: "SheenChair by Khronos",
-  },
-  {
-    key: "dish",
-    url: "/models/life/dish_poly.glb",
-    label: "餐具盘",
-    category: "生活用品",
-    license: "CC-BY 3.0",
-    credit: "Dish by Poly by Google",
-  },
   {
     key: "lantern_hunyuan",
     url: "/models/products/lantern_hunyuan.glb",
@@ -577,13 +515,11 @@ export function WebglDemo() {
   );
 }
 
-useGLTF.preload("/models/products/vase.glb");
 useGLTF.preload("/models/products/bracelet_poly.glb");
 useGLTF.preload("/models/heritage/cloisonne/cloisonne.glb");
 useGLTF.preload("/models/products/lantern_hunyuan.glb");
 useGLTF.preload("/models/products/winepot_tc.glb");
 useGLTF.preload("/models/products/pouch_tc.glb");
-useGLTF.preload("/models/products/bracelet_poly.glb");
 useGLTF.preload("/models/products/jade_disc_tc.glb");
 useGLTF.preload("/models/heritage/xianglu_tc.glb");
 useGLTF.preload("/models/heritage/miao_attire_tc.glb");
