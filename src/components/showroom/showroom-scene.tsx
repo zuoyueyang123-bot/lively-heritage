@@ -11,7 +11,9 @@ export type ShowroomVariant =
   | "winepot"
   | "pouch"
   | "cloisonne"
-  | "bracelet";
+  | "bracelet"
+  | "xianglu"
+  | "miao_attire";
 
 function fallbackPattern() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="#151827"/><circle cx="256" cy="256" r="160" fill="#d44a3d"/><circle cx="256" cy="256" r="92" fill="#c9984a"/><text x="256" y="276" text-anchor="middle" font-size="44" font-family="sans-serif" fill="#e8e4dd">非遗有灵</text></svg>`;

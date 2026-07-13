@@ -94,6 +94,24 @@ const BUILTIN: Record<string, ModelDef> = {
     credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
     realTexture: true,
   },
+  xianglu: {
+    key: "xianglu",
+    url: "/models/heritage/xianglu_tc.glb",
+    label: "西汉青铜博山炉·混元生成",
+    category: "青铜礼器",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  miao_attire: {
+    key: "miao_attire",
+    url: "/models/heritage/miao_attire_tc.glb",
+    label: "苗族传统盛装·混元生成",
+    category: "非遗服饰",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
 };
 
 // 供 3D 数字藏品馆 等页面复用，集中展示全部真实 GLB
@@ -107,6 +125,8 @@ const VARIANT_TO_KEY: Record<string, string> = {
   winepot: "winepot",
   pouch: "pouch",
   bracelet: "bracelet",
+  xianglu: "xianglu",
+  miao_attire: "miao_attire",
   hoop: "",
   fabric: "",
 };
@@ -346,7 +366,9 @@ export function HeritageModel3D({
     | "lantern"
     | "winepot"
     | "pouch"
-    | "bracelet";
+    | "bracelet"
+    | "xianglu"
+    | "miao_attire";
   className?: string;
   enableControls?: boolean;
 }) {
@@ -436,3 +458,5 @@ useGLTF.preload("/models/products/lantern_hunyuan.glb");
 useGLTF.preload("/models/products/winepot_tc.glb");
 useGLTF.preload("/models/products/pouch_tc.glb");
 useGLTF.preload("/models/products/jade_disc_tc.glb");
+useGLTF.preload("/models/heritage/xianglu_tc.glb");
+useGLTF.preload("/models/heritage/miao_attire_tc.glb");

@@ -45,10 +45,24 @@ const MODELS: ModelDef[] = [
       "18th C Chinese Cloisonne Vase, Minneapolis Institute of Art (CC0)",
     realTexture: true,
   },
-  // TODO: Smithsonian CC0 西汉金银错青铜香炉 — 待下载
-  // { key: "xianglu", url: "/models/heritage/smithsonian/xianglu.glb", label: "🔥 香炉·西汉", category: "非遗展品", license: "CC0", credit: "Lidded Incense Burner (xianglu), Smithsonian (CC0)", realTexture: true },
-  // TODO: Meshy CC0 苗绣传统服饰 — 待下载
-  // { key: "miao_attire", url: "/models/heritage/miao_attire.glb", label: "👘 苗绣·传统服饰", category: "非遗服饰", license: "CC0", credit: "Traditional Hmong Attire, Meshy AI (CC0)" },
+  {
+    key: "xianglu",
+    url: "/models/heritage/xianglu_tc.glb",
+    label: "🔥 西汉青铜博山炉·混元生成",
+    category: "青铜礼器",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "miao_attire",
+    url: "/models/heritage/miao_attire_tc.glb",
+    label: "👗 苗族传统盛装·混元生成",
+    category: "非遗服饰",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
 
   // ── 真·手镯（真实免费可商用 3D 模型，已下载）──
   {
@@ -571,3 +585,5 @@ useGLTF.preload("/models/products/winepot_tc.glb");
 useGLTF.preload("/models/products/pouch_tc.glb");
 useGLTF.preload("/models/products/bracelet_poly.glb");
 useGLTF.preload("/models/products/jade_disc_tc.glb");
+useGLTF.preload("/models/heritage/xianglu_tc.glb");
+useGLTF.preload("/models/heritage/miao_attire_tc.glb");
