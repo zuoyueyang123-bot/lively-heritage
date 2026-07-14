@@ -19,7 +19,13 @@ export type ShowroomKind =
   | "fabric"
   | "cloisonne"
   | "pouch"
-  | "lantern";
+  | "lantern"
+  | "qinghua"
+  | "shadow"
+  | "thangka"
+  | "tiedye"
+  | "blueprint"
+  | "yunjin";
 
 export type Inheritor = {
   name: string;

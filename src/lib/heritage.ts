@@ -122,7 +122,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["花瓶", "陶瓷杯", "首饰盒", "商务礼"],
     render: "jingtai",
-    showroom: "vase",
+    showroom: "cloisonne",
   },
   {
     id: "tieDye",
@@ -178,7 +178,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["挂布", "围巾", "壁纸", "家居礼"],
     render: "tieDye",
-    showroom: "fabric",
+    showroom: "tiedye",
   },
   {
     id: "paperCut",
@@ -290,7 +290,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["布袋", "桌旗", "抱枕", "城市礼"],
     render: "bluePrint",
-    showroom: "fabric",
+    showroom: "blueprint",
   },
   {
     id: "yunjin",
@@ -325,7 +325,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["丝巾", "锦盒", "屏风", "国礼"],
     render: "jingtai",
-    showroom: "fabric",
+    showroom: "yunjin",
   },
   {
     id: "kesi",
@@ -358,7 +358,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["册页", "团扇", "书画装裱", "典藏礼"],
     render: "miao",
-    showroom: "fabric",
+    showroom: "yunjin",
   },
   {
     id: "qinghua",
@@ -392,7 +392,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["茶器", "花瓶", "餐瓷", "商务礼"],
     render: "bluePrint",
-    showroom: "vase",
+    showroom: "qinghua",
   },
   {
     id: "nianhua",
@@ -458,7 +458,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["影人摆件", "灯具", "装饰画", "文创礼"],
     render: "paperCut",
-    showroom: "fabric",
+    showroom: "shadow",
   },
   {
     id: "thangka",
@@ -491,7 +491,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["卷轴画", "装饰画", "文化礼品", "典藏礼"],
     render: "jingtai",
-    showroom: "vase",
+    showroom: "thangka",
   },
 ];
 

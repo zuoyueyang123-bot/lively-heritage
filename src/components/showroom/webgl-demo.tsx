@@ -64,6 +64,62 @@ const MODELS: ModelDef[] = [
     realTexture: true,
   },
 
+  // ── 混元生成·新增非遗展品（图生 3D，1K WebP 纹理）──
+  {
+    key: "qinghua",
+    url: "/models/heritage/qinghua_tc.glb",
+    label: "🏺 青花瓷·混元生成",
+    category: "陶瓷",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "shadow",
+    url: "/models/heritage/shadow_tc.glb",
+    label: "🎭 皮影影人·混元生成",
+    category: "皮影",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "thangka",
+    url: "/models/heritage/thangka_tc.glb",
+    label: "🖼️ 唐卡·混元生成",
+    category: "唐卡",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "tiedye",
+    url: "/models/heritage/tiedye_tc.glb",
+    label: "💧 扎染·混元生成",
+    category: "扎染",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "blueprint",
+    url: "/models/heritage/blueprint_tc.glb",
+    label: "🔷 蓝印花布·混元生成",
+    category: "蓝印花布",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+  {
+    key: "yunjin",
+    url: "/models/heritage/yunjin_tc.glb",
+    label: "🐉 南京云锦·混元生成",
+    category: "云锦",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
+
   // ── 真实 3D 模型 ──
   {
     key: "silver_bangle",
@@ -523,3 +579,9 @@ useGLTF.preload("/models/products/pouch_tc.glb");
 useGLTF.preload("/models/products/jade_disc_tc.glb");
 useGLTF.preload("/models/heritage/xianglu_tc.glb");
 useGLTF.preload("/models/heritage/miao_attire_tc.glb");
+useGLTF.preload("/models/heritage/qinghua_tc.glb");
+useGLTF.preload("/models/heritage/shadow_tc.glb");
+useGLTF.preload("/models/heritage/thangka_tc.glb");
+useGLTF.preload("/models/heritage/tiedye_tc.glb");
+useGLTF.preload("/models/heritage/blueprint_tc.glb");
+useGLTF.preload("/models/heritage/yunjin_tc.glb");

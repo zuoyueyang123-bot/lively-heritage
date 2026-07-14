@@ -13,7 +13,13 @@ export type ShowroomVariant =
   | "cloisonne"
   | "bracelet"
   | "xianglu"
-  | "miao_attire";
+  | "miao_attire"
+  | "qinghua"
+  | "shadow"
+  | "thangka"
+  | "tiedye"
+  | "blueprint"
+  | "yunjin";
 
 function fallbackPattern() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="#151827"/><circle cx="256" cy="256" r="160" fill="#d44a3d"/><circle cx="256" cy="256" r="92" fill="#c9984a"/><text x="256" y="276" text-anchor="middle" font-size="44" font-family="sans-serif" fill="#e8e4dd">非遗有灵</text></svg>`;
@@ -118,7 +124,16 @@ function ShowroomObject({ textureUrl, variant, rotation }: { textureUrl?: string
   const image = textureUrl || fallbackPattern();
   const body = useMemo(() => {
     if (variant === "hoop" || variant === "lantern") return <HoopObject image={image} />;
-    if (variant === "fabric" || variant === "pouch") return <FabricObject image={image} />;
+    if (
+      variant === "fabric" ||
+      variant === "pouch" ||
+      variant === "tiedye" ||
+      variant === "blueprint" ||
+      variant === "yunjin" ||
+      variant === "shadow" ||
+      variant === "thangka"
+    )
+      return <FabricObject image={image} />;
     return <VaseObject image={image} />;
   }, [image, variant]);
 
@@ -165,7 +180,19 @@ export function ShowroomScene({
               ? "苗绣荷包"
               : variant === "bracelet"
                 ? "真·手镯"
-                : "景泰蓝花瓶";
+                : variant === "qinghua"
+                  ? "青花瓷"
+                  : variant === "shadow"
+                    ? "皮影影人"
+                    : variant === "thangka"
+                      ? "唐卡"
+                      : variant === "tiedye"
+                        ? "扎染挂布"
+                        : variant === "blueprint"
+                          ? "蓝印花布"
+                          : variant === "yunjin"
+                            ? "南京云锦"
+                            : "景泰蓝花瓶";
   const { rotation, dragProps } = useDragRotation();
 
   return (
