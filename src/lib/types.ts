@@ -25,7 +25,8 @@ export type ShowroomKind =
   | "thangka"
   | "tiedye"
   | "blueprint"
-  | "yunjin";
+  | "yunjin"
+  | "nianhua";
 
 export type Inheritor = {
   name: string;

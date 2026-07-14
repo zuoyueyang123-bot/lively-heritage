@@ -11,6 +11,7 @@ import { HeritageModel3D } from "@/components/showroom/heritage-model";
 import { ProductMockups } from "@/components/mockup/product-mockups";
 import { generatePattern, type CraftAlgorithm } from "@/lib/pattern-engine";
 import { getCraft } from "@/lib/heritage";
+import type { CraftId } from "@/lib/types";
 import { Eye, Heart } from "lucide-react";
 import { getLikeState, registerView, toggleLike } from "@/lib/engagement";
 import { SimilarWorks } from "@/components/proposal/similar-works";
@@ -82,6 +83,125 @@ export function WorkDetail({ slug }: { slug: string }) {
   }, [needsGeneration, artwork]);
 
   if (missing) {
+    const ci = getCraft(slug as CraftId);
+    // 已知工艺但缺作品数据 → 优雅降级为「非遗工艺数字展厅」预览，避免空白报错
+    if (ci.id === slug) {
+      return (
+        <main className="page-shell py-10">
+          <section className="mb-6 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+            <div>
+              <div className="text-sm font-black uppercase tracking-[0.24em] text-[var(--gold)]">
+                非遗工艺数字展厅
+              </div>
+              <h1 className="section-title mt-2">{ci.name}</h1>
+              <p className="mt-3 max-w-2xl text-lg font-semibold text-[var(--foreground-dim)]">
+                该工艺的 3D 数字展品与文脉导览（作品数据暂未收录，以下为工艺展示预览）
+              </p>
+            </div>
+            <Link
+              href={`/create?prompt=${encodeURIComponent(ci.name)}&craft=${encodeURIComponent(ci.id)}`}
+              className="gold-button inline-flex items-center justify-center gap-2 px-5 py-3"
+            >
+              <RotateCcw size={17} />
+              用这个主题创作
+            </Link>
+          </section>
+
+          <section className="mt-8 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="text-2xl font-black">3D 数字展品</h2>
+                <span className="rounded-full bg-white/8 px-3 py-1 text-xs font-black text-[var(--foreground-dim)]">
+                  真实 3D 展品
+                </span>
+              </div>
+              <HeritageModel3D
+                variant={ci.showroom}
+                pattern={ci.render === "jingtai" ? "cloisonne" : "miao"}
+                className="h-[320px] sm:h-[420px]"
+                enableControls={true}
+              />
+            </div>
+            <aside className="glass-panel rounded-[28px] p-5">
+              <div className="flex items-center gap-2 text-sm font-black text-[var(--cyan)]">
+                <Share2 size={18} />
+                分享与再创作
+              </div>
+              <div className="mt-5 inline-block rounded-2xl bg-white p-3">
+                <QRCodeSVG
+                  value={shareUrl || "https://feiyi.local"}
+                  size={132}
+                />
+              </div>
+              <p className="mt-4 text-sm leading-6 text-[var(--foreground-dim)]">
+                分享这件非遗工艺，别人可以打开独立页面，也可以带着同一主题继续生成新的非遗文创提案。
+              </p>
+              <Link
+                href={`/create?prompt=${encodeURIComponent(ci.name)}&craft=${encodeURIComponent(ci.id)}`}
+                className="gold-button mt-5 flex items-center justify-center gap-2 px-5 py-4"
+              >
+                <RotateCcw size={18} />
+                用这个主题再炼一次
+              </Link>
+            </aside>
+          </section>
+
+          {/* Cultural story — heritage metadata only, no artwork required */}
+          <section className="mt-8">
+            <h2 className="mb-4 text-2xl font-black">这件工艺背后的文化</h2>
+            <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+              <div className="glass-panel rounded-[28px] p-6">
+                <div className="text-xs font-black uppercase tracking-wide text-[var(--gold)]">
+                  工艺渊源 · {ci.name}
+                </div>
+                <p className="mt-3 text-sm leading-7 text-[var(--foreground-dim)]">
+                  {ci.history}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {ci.features.map((f) => (
+                    <span
+                      key={f}
+                      className="rounded-full bg-[var(--gold)]/10 px-2.5 py-1 text-xs font-bold text-[var(--gold)]"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col gap-4">
+                <div className="glass-panel rounded-[28px] p-6">
+                  <div className="text-xs font-black uppercase tracking-wide text-[var(--gold)]">
+                    纹样寓意 · {ci.motifs?.[0]?.name ?? ci.features[0] ?? "纹样"}
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-[var(--foreground-dim)]">
+                    {ci.motifs?.[0]?.story ?? ci.history}
+                  </p>
+                </div>
+                <div className="glass-panel rounded-[28px] p-6">
+                  <div className="text-xs font-black uppercase tracking-wide text-[var(--gold)]">
+                    守护这门技艺的人
+                  </div>
+                  <div className="mt-3 flex items-center gap-3">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-linear-to-br from-[var(--gold)] to-[var(--cinnabar)] text-lg font-black text-white">
+                      {ci.inheritor.name.slice(0, 1)}
+                    </div>
+                    <div>
+                      <div className="font-black">{ci.inheritor.name}</div>
+                      <div className="text-xs text-[var(--foreground-dim)]">
+                        {ci.inheritor.title}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[var(--foreground-dim)]">
+                    {ci.inheritor.story}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      );
+    }
     return (
       <div className="page-shell py-20">
         <div className="glass-panel rounded-[28px] p-8 text-center">

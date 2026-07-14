@@ -19,7 +19,8 @@ export type ShowroomVariant =
   | "thangka"
   | "tiedye"
   | "blueprint"
-  | "yunjin";
+  | "yunjin"
+  | "nianhua";
 
 function fallbackPattern() {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="#151827"/><circle cx="256" cy="256" r="160" fill="#d44a3d"/><circle cx="256" cy="256" r="92" fill="#c9984a"/><text x="256" y="276" text-anchor="middle" font-size="44" font-family="sans-serif" fill="#e8e4dd">非遗有灵</text></svg>`;
@@ -131,7 +132,8 @@ function ShowroomObject({ textureUrl, variant, rotation }: { textureUrl?: string
       variant === "blueprint" ||
       variant === "yunjin" ||
       variant === "shadow" ||
-      variant === "thangka"
+      variant === "thangka" ||
+      variant === "nianhua"
     )
       return <FabricObject image={image} />;
     return <VaseObject image={image} />;
@@ -190,9 +192,11 @@ export function ShowroomScene({
                         ? "扎染挂布"
                         : variant === "blueprint"
                           ? "蓝印花布"
-                          : variant === "yunjin"
-                            ? "南京云锦"
-                            : "景泰蓝花瓶";
+        : variant === "yunjin"
+          ? "南京云锦"
+          : variant === "nianhua"
+            ? "杨柳青年画"
+            : "景泰蓝花瓶";
   const { rotation, dragProps } = useDragRotation();
 
   return (

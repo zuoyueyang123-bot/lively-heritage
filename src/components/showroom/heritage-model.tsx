@@ -159,6 +159,15 @@ const BUILTIN: Record<string, ModelDef> = {
     credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
     realTexture: true,
   },
+  nianhua: {
+    key: "nianhua",
+    url: "/models/heritage/nianhua_tc.glb",
+    label: "杨柳青年画·混元生成",
+    category: "年画",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
 };
 
 // 供 3D 数字藏品馆 等页面复用，集中展示全部真实 GLB
@@ -178,6 +187,7 @@ const VARIANT_TO_KEY: Record<string, string> = {
   tiedye: "tiedye",
   blueprint: "blueprint",
   yunjin: "yunjin",
+  nianhua: "nianhua",
   hoop: "",
   fabric: "",
 };
@@ -425,7 +435,8 @@ export function HeritageModel3D({
   | "thangka"
   | "tiedye"
   | "blueprint"
-  | "yunjin";
+  | "yunjin"
+  | "nianhua";
   className?: string;
   enableControls?: boolean;
 }) {
@@ -516,3 +527,4 @@ useGLTF.preload("/models/products/pouch_tc.glb");
 useGLTF.preload("/models/products/jade_disc_tc.glb");
 useGLTF.preload("/models/heritage/xianglu_tc.glb");
 useGLTF.preload("/models/heritage/miao_attire_tc.glb");
+useGLTF.preload("/models/heritage/nianhua_tc.glb");

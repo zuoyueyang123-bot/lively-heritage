@@ -425,7 +425,7 @@ export const crafts: HeritageCraft[] = [
     },
     products: ["年画", "红包", "台历", "节庆礼"],
     render: "paperCut",
-    showroom: "fabric",
+    showroom: "nianhua",
   },
   {
     id: "shadowPlay",
