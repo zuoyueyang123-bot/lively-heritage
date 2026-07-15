@@ -580,18 +580,5 @@ export function WebglDemo() {
   );
 }
 
-useGLTF.preload("/models/products/bracelet_poly.glb");
+// 预加载默认模型（景泰蓝），其余按需加载——避免首屏同时下载 ~80MB GLB 导致浏览器卡死
 useGLTF.preload("/models/heritage/cloisonne/cloisonne.glb");
-useGLTF.preload("/models/products/lantern_hunyuan.glb");
-useGLTF.preload("/models/products/winepot_tc.glb");
-useGLTF.preload("/models/products/pouch_tc.glb");
-useGLTF.preload("/models/products/jade_disc_tc.glb");
-useGLTF.preload("/models/heritage/xianglu_tc.glb");
-useGLTF.preload("/models/heritage/miao_attire_tc.glb");
-useGLTF.preload("/models/heritage/qinghua_tc.glb");
-useGLTF.preload("/models/heritage/shadow_tc.glb");
-useGLTF.preload("/models/heritage/thangka_tc.glb");
-useGLTF.preload("/models/heritage/tiedye_tc.glb");
-useGLTF.preload("/models/heritage/blueprint_tc.glb");
-useGLTF.preload("/models/heritage/yunjin_tc.glb");
-useGLTF.preload("/models/heritage/nianhua_tc.glb");
