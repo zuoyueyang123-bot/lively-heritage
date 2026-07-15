@@ -119,6 +119,15 @@ const MODELS: ModelDef[] = [
     credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
     realTexture: true,
   },
+  {
+    key: "nianhua",
+    url: "/models/heritage/nianhua_tc.glb",
+    label: "🎨 杨柳青年画·混元生成",
+    category: "年画",
+    license: "内部使用/混元3D",
+    credit: "腾讯混元3D图生3D生成（Hunyuan 3D）",
+    realTexture: true,
+  },
 
   // ── 真实 3D 模型 ──
   {
@@ -585,3 +594,4 @@ useGLTF.preload("/models/heritage/thangka_tc.glb");
 useGLTF.preload("/models/heritage/tiedye_tc.glb");
 useGLTF.preload("/models/heritage/blueprint_tc.glb");
 useGLTF.preload("/models/heritage/yunjin_tc.glb");
+useGLTF.preload("/models/heritage/nianhua_tc.glb");
