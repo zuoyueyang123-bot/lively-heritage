@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Html, OrbitControls, useGLTF } from "@react-three/drei";
 import {
   Component,
   Suspense,
@@ -492,10 +492,14 @@ export function HeritageModel3D({
         <directionalLight position={[-4, 1, -2]} intensity={0.6} />
         <Suspense
           fallback={
-            <mesh>
-              <boxGeometry args={[0.5, 0.5, 0.5]} />
-              <meshStandardMaterial color="#333" wireframe />
-            </mesh>
+            <group>
+              <Html center>
+                <div className="flex flex-col items-center gap-3 text-white/90">
+                  <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-[var(--gold)]" />
+                  <span className="text-xs font-black tracking-wide">3D 模型加载中…</span>
+                </div>
+              </Html>
+            </group>
           }
         >
           <ModelErrorBoundary name={def.label} onError={() => setFailed(true)}>
